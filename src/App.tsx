@@ -1,11 +1,12 @@
 import './App.css'
+import MainLayout from './components/layouts/MainLayout'
 
 function App() {
 
 
   return (
     <>
-      <button className="btn btn-error">btn</button>
+      <MainLayout></MainLayout>
     </>
   )
 }
