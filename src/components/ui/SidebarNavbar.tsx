@@ -115,7 +115,7 @@ export default function SidebarNavbar({ children }) {
                         </label>
                     </div>
                     <div className="mx-2 flex-1 px-2">
-                        <GiTreeBranch size={50} className="" />
+                        <GiTreeBranch size={50} />
                         <span className="text-black font-black">Nursy</span>
                     </div>
                     <div className="flex justify-center items-center">
