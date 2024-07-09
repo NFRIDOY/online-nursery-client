@@ -1,19 +1,33 @@
 import { FaShoppingCart } from "react-icons/fa";
 import { GiTreeBranch } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function SidebarNavbar({ children }) {
     const menu = (
         <>
             <li>
-                <button className="btn btn-primary md:btn-secondary">
+                <NavLink
+                    to="/"
+                    className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "active btn btn-accent md:btn-accent text-black" : "btn btn-neutral"
+                    }>
                     Home
-                </button>
+                </NavLink>
+                {/* <button className="btn btn-btn-accent md:btn-accent">
+                    
+                </button> */}
             </li>
             <li>
-                <button className="btn btn-primary md:btn-secondary">
+                <NavLink
+                    to="/category"
+                    className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "active btn btn-accent md:btn-accent text-black" : "btn btn-neutral"
+                    }>
                     Category
-                </button>
+                </NavLink>
+                {/* <button className="btn btn-primary md:btn-secondary">
+                    Category
+                </button> */}
             </li>
         </>
     );
@@ -95,7 +109,7 @@ export default function SidebarNavbar({ children }) {
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
                 {/* Navbar */}
-                <div className="navbar w-full gradientPrimary">
+                <div className="navbar w-full gradientPrimary ">
                     <div className="flex-none lg:hidden">
                         <label
                             htmlFor="my-drawer-3"
@@ -138,7 +152,7 @@ export default function SidebarNavbar({ children }) {
                     htmlFor="my-drawer-3"
                     aria-label="close sidebar"
                     className="drawer-overlay"></label>
-                <ul className="menu gradientPrimary min-h-full w-80 p-4 space-y-2">
+                <ul className="menu bg-base-200 min-h-full w-80 p-4 space-y-2">
                     {/* Sidebar content here */}
                     {menu}
                 </ul>
