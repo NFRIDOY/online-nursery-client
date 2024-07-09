@@ -1,3 +1,9 @@
+
+import PaginationDynamicBanner from '../components/layouts/Banners/PaginationDynamicBanner';
 export default function Home() {
-    return <div>Home</div>;
+    return (
+        <div>
+            <PaginationDynamicBanner />
+        </div>
+    );
 }
