@@ -9,7 +9,7 @@ export default function SidebarNavbar({ children }) {
                 <NavLink
                     to="/"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "active btn btn-accent md:btn-accent text-black" : "btn btn-neutral"
+                        isPending ? "pending" : isActive ? "active btn btn-accent md:btn-accent text-white " : "btn btn-neutral text-white"
                     }>
                     Home
                 </NavLink>
@@ -21,7 +21,7 @@ export default function SidebarNavbar({ children }) {
                 <NavLink
                     to="/category"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "active btn btn-accent md:btn-accent text-black" : "btn btn-neutral"
+                        isPending ? "pending" : isActive ? "active btn btn-accent md:btn-accent text-white " : "btn btn-neutral text-white"
                     }>
                     Category
                 </NavLink>
@@ -61,7 +61,7 @@ export default function SidebarNavbar({ children }) {
                     </div>
                     <div
                         tabIndex={0}
-                        className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
+                        className="card card-compact dropdown-content bg-base-100 z-[11] mt-3 w-52 shadow">
                         <div className="card-body">
                             <span className="text-lg font-bold">8 Items</span>
                             <span className="text-info">Subtotal: $999</span>
@@ -87,7 +87,7 @@ export default function SidebarNavbar({ children }) {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[11] mt-3 w-52 p-2 shadow">
                         <li>
                             <Link to={"/"} className="justify-between">
                                 Profile

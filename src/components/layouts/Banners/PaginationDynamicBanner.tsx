@@ -43,7 +43,7 @@ const PaginationDynamicBanner = () => {
                     ))}
                 </Swiper>
             </div>
-            <div className="absolute text-7xl top-[30%] left-20 z-50 w-1/2">
+            <div className="absolute text-7xl top-[30%] left-20 z-10 w-1/2">
                 <h1>
                     Let's Make{" "}
                     <span className=" text-white font-bold">Beautiful</span>{" "}
