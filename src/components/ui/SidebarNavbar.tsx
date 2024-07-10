@@ -13,9 +13,6 @@ export default function SidebarNavbar({ children }) {
                     }>
                     Home
                 </NavLink>
-                {/* <button className="btn btn-btn-accent md:btn-accent">
-                    
-                </button> */}
             </li>
             <li>
                 <NavLink
@@ -25,9 +22,15 @@ export default function SidebarNavbar({ children }) {
                     }>
                     Category
                 </NavLink>
-                {/* <button className="btn btn-primary md:btn-secondary">
-                    Category
-                </button> */}
+            </li>
+            <li>
+                <NavLink
+                    to="/products"
+                    className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "active btn btn-accent md:btn-accent text-white " : "btn btn-neutral text-white"
+                    }>
+                    Products
+                </NavLink>
             </li>
         </>
     );
