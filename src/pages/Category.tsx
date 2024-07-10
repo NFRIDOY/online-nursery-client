@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "../../../hooks/useAxios";
-import ProductCard from "./ProductCard";
-import { TProduct } from "../../../utils/types/product.interface";
-import Container from "../../ui/Container";
-import Title from "../../ui/Title";
+import ProductCard from "../components/layouts/Products/ProductCard";
+import Container from "../components/ui/Container";
+import Title from "../components/ui/Title";
+import { TProduct } from "../utils/types/product.interface";
+import useAxios from "../hooks/useAxios";
 
-const AllProducts = () => {
+const Category = () => {
     // const { data: products, error, isLoading } = useGetProductsQuery(undefined);
 
     const publicAxios = useAxios();
@@ -37,7 +37,7 @@ const AllProducts = () => {
     console.log(productData);
     return (
         <Container>
-            <Title>All Plants</Title>
+            <Title>Categories</Title>
             <div className="grid grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 ">
                 {productData?.data?.map((product: TProduct) => (
                     <>
@@ -49,4 +49,4 @@ const AllProducts = () => {
     );
 };
 
-export default AllProducts;
+export default Category;
