@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home";
-import AllProducts from "./../components/layouts/Products/AllProducts";
+import AllProducts from "../pages/AllProducts";
 import Category from "../pages/Category";
+import Admin from "../pages/Admin/Admin";
+import AdminDashboard from "../pages/Admin/AdminDashboard";
 
 export const router = createBrowserRouter([
     {
@@ -14,16 +16,26 @@ export const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: "/category",
+                path: "category",
                 element: <Category />,
             },
             {
-                path: "/products",
+                path: "products",
                 element: <AllProducts />,
             },
             {
-                path: "/admin",
-                element: <div>Admin</div>,
+                path: "admin",
+                element: <Admin />,
+                children: [
+                    {
+                        path: "dashboard",
+                        element: <AdminDashboard />,
+                    },
+                    {
+                        path: "products",
+                        element: <div>Products</div>,
+                    },
+                ],
             },
         ],
     },

@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import ProductCard from "../components/layouts/Products/ProductCard";
-import Container from "../components/ui/Container";
-import Title from "../components/ui/Title";
-import { TProduct } from "../utils/types/product.interface";
-import useAxios from "../hooks/useAxios";
-import useScrollToTop from "../utils-hooks-React/hooks/useScrollToTop";
+import useAxios from "../../../hooks/useAxios";
+import ProductCard from "./ProductCard";
+import { TProduct } from "../../../utils/types/product.interface";
+import Container from "../../ui/Container";
+import Title from "../../ui/Title";
+import { Link } from "react-router-dom";
+import useScrollToTop from "../../../utils-hooks-React/hooks/useScrollToTop";
 
-const Category = () => {
+const Products = () => {
     // const { data: products, error, isLoading } = useGetProductsQuery(undefined);
     useScrollToTop();
 
@@ -39,16 +40,19 @@ const Category = () => {
     console.log(productData);
     return (
         <Container>
-            <Title>Categories</Title>
-            <div className="grid grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 ">
-                {productData?.data?.map((product: TProduct) => (
+            <Title>All Plants</Title>
+            <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 ">
+                {productData?.data?.slice(0,6)?.map((product: TProduct) => (
                     <>
                         <ProductCard product={product} />
                     </>
                 ))}
             </div>
+            <div className="flex justify-center items-center my-8">
+                <Link to={"/products"} className="btn btn-secondary"> See More</Link>
+            </div>
         </Container>
     );
 };
 
-export default Category;
+export default Products;

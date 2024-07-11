@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "../../../hooks/useAxios";
-import ProductCard from "./ProductCard";
-import { TProduct } from "../../../utils/types/product.interface";
-import Container from "../../ui/Container";
-import Title from "../../ui/Title";
+import useAxios from "../hooks/useAxios";
+import Container from "../components/ui/Container";
+import { TProduct } from "../utils/types/product.interface";
+import ProductCard from "../components/layouts/Products/ProductCard";
+import Title from "../components/ui/Title";
+
 
 const AllProducts = () => {
     // const { data: products, error, isLoading } = useGetProductsQuery(undefined);
@@ -38,7 +39,7 @@ const AllProducts = () => {
     return (
         <Container>
             <Title>All Plants</Title>
-            <div className="grid grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 ">
+            <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 ">
                 {productData?.data?.map((product: TProduct) => (
                     <>
                         <ProductCard product={product} />

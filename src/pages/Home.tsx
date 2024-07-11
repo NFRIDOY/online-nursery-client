@@ -1,13 +1,13 @@
 import PaginationDynamicBanner from "../components/layouts/Banners/PaginationDynamicBanner";
-import AllProducts from "../components/layouts/Products/AllProducts";
+import Products from "../components/layouts/Products/Products";
+import useScrollToTop from "../utils-hooks-React/hooks/useScrollToTop";
 export default function Home() {
+    useScrollToTop();
     return (
         <div>
             <PaginationDynamicBanner />
-            <div className="bg-secondary">
-                {" "}
-                
-                <AllProducts />
+            <div className="">
+                <Products />
             </div>
         </div>
     );

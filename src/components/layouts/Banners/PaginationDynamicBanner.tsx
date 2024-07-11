@@ -14,7 +14,7 @@ import { bannersLinks } from "../../../utils/bannersLinks";
 
 const PaginationDynamicBanner = () => {
     return (
-        <div className="relative">
+        <div className="relative -z-50">
             <div>
                 <Swiper
                     pagination={{
@@ -29,7 +29,7 @@ const PaginationDynamicBanner = () => {
                     }}
                     speed={1000}
                     modules={[Pagination, EffectFade, Autoplay]}
-                    className="mySwiper h-[calc(100vh-80px)] ">
+                    className="mySwiper md:h-[calc(100vh-80px)] -z-50">
                     {bannersLinks.map((banner) => (
                         <>
                             <SwiperSlide>
@@ -43,7 +43,7 @@ const PaginationDynamicBanner = () => {
                     ))}
                 </Swiper>
             </div>
-            <div className="absolute text-7xl top-[30%] left-20 z-10 w-1/2">
+            <div className="absolute text-2xl lg:text-7xl top-10 lg:top-[30%] left-10  lg:left-20 z-10 w-1/2 font-bold md:font-normal">
                 <h1>
                     Let's Make{" "}
                     <span className=" text-white font-bold">Beautiful</span>{" "}

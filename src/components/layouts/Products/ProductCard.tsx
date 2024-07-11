@@ -1,7 +1,7 @@
 // import TProduct from "../../../utils/types/product.interface.ts"
 const ProductCard = ({ product }) => {
     return (
-        <div className="card bg-base-100 w-72 shadow-xl">
+        <div className="card card-compact bg-base-100  max-h-96 my-auto w-48 md:w-72 shadow-xl mx-auto">
             <figure>
                 <img
                     src={product?.image}

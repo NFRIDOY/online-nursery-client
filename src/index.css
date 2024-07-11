@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 .gradientPrimary {
-    @apply bg-gradient-to-tr from-primary to-primary ;
+    @apply bg-gradient-to-tr from-primary to-primary;
 }
 .activeBtn {
-    @apply btn btn-primary md:btn-secondary text-black
+    @apply btn btn-primary md:btn-secondary text-black;
 }
+
+/* *{
+    border: 1px solid red;
+} */

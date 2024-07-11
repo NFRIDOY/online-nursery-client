@@ -5,9 +5,9 @@ function App() {
 
 
   return (
-    <>
+    <main className=''>
       <MainLayout></MainLayout>
-    </>
+    </main>
   )
 }
 

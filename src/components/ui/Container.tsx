@@ -1,5 +1,5 @@
 const Container = ({ children }) => {
-    return <div className="mx-20">{children}</div>;
+    return <div className="lg:mx-20">{children}</div>;
 };
 
 export default Container;

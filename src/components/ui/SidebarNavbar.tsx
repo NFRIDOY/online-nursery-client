@@ -1,5 +1,6 @@
-import { FaShoppingCart } from "react-icons/fa";
+import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import { GiTreeBranch } from "react-icons/gi";
+import { RiDeleteBack2Fill } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
 
 export default function SidebarNavbar({ children }) {
@@ -9,7 +10,11 @@ export default function SidebarNavbar({ children }) {
                 <NavLink
                     to="/"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "active btn btn-accent md:btn-accent text-white " : "btn btn-neutral text-white"
+                        isPending
+                            ? "pending"
+                            : isActive
+                            ? "active btn btn-accent md:btn-accent text-white "
+                            : "btn btn-neutral text-white"
                     }>
                     Home
                 </NavLink>
@@ -18,7 +23,11 @@ export default function SidebarNavbar({ children }) {
                 <NavLink
                     to="/category"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "active btn btn-accent md:btn-accent text-white " : "btn btn-neutral text-white"
+                        isPending
+                            ? "pending"
+                            : isActive
+                            ? "active btn btn-accent md:btn-accent text-white "
+                            : "btn btn-neutral text-white"
                     }>
                     Category
                 </NavLink>
@@ -27,7 +36,11 @@ export default function SidebarNavbar({ children }) {
                 <NavLink
                     to="/products"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "active btn btn-accent md:btn-accent text-white " : "btn btn-neutral text-white"
+                        isPending
+                            ? "pending"
+                            : isActive
+                            ? "active btn btn-accent md:btn-accent text-white "
+                            : "btn btn-neutral text-white"
                     }>
                     Products
                 </NavLink>
@@ -90,17 +103,25 @@ export default function SidebarNavbar({ children }) {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[11] mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[11] mt-3 w-52 p-2 shadow space-y-3">
                         <li>
-                            <Link to={"/"} className="justify-between">
+                            <Link to={"/"} className="btn btn-secondary btn-sm">
                                 Profile
                             </Link>
                         </li>
                         <li>
-                            <Link to={"/"}>Admin</Link>
+                            <Link
+                                to={"/admin"}
+                                className="btn btn-secondary btn-sm">
+                                Admin
+                            </Link>
                         </li>
                         <li>
-                            <Link to={"/"}>Logout</Link>
+                            <Link
+                                to={"/"}
+                                className="btn btn-error text-white btn-sm">
+                                Logout
+                            </Link>
                         </li>
                     </ul>
                 </div>
@@ -135,7 +156,8 @@ export default function SidebarNavbar({ children }) {
                         <GiTreeBranch size={50} />
                         <span className="text-black font-black">Nursy</span>
                     </div>
-                    <div className="flex justify-center items-center">
+                    
+                    <div className="flex justify-center items-center z-50">
                         <div className="hidden flex-none lg:block">
                             <ul className="menu menu-horizontal md:space-x-2">
                                 {/* Navbar menu content here */}
