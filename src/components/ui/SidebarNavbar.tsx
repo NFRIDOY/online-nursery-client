@@ -111,7 +111,7 @@ export default function SidebarNavbar({ children }) {
                         </li>
                         <li>
                             <Link
-                                to={"/admin"}
+                                to={"/admin/dashboard"}
                                 className="btn btn-secondary btn-sm">
                                 Admin
                             </Link>

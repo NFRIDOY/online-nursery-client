@@ -4,7 +4,7 @@ import Container from "../components/ui/Container";
 import Title from "../components/ui/Title";
 import { TProduct } from "../utils/types/product.interface";
 import useAxios from "../hooks/useAxios";
-import useScrollToTop from "../utils-hooks-React/hooks/useScrollToTop";
+import useScrollToTop from "../utils-hooks-ts-React/hooks/useScrollToTop";
 
 const Category = () => {
     // const { data: products, error, isLoading } = useGetProductsQuery(undefined);

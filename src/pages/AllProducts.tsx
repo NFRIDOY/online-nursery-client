@@ -11,12 +11,6 @@ const AllProducts = () => {
 
     const publicAxios = useAxios();
 
-    // const {
-    //     data: products,
-    //     isPending,
-    //     isError,
-    // } = useQuery({ queryKey: ["products"], queryFn: getProducts });
-
     const {
         isPending: isPendingProducts,
         error: errorProducts,

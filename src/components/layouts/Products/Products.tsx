@@ -5,7 +5,7 @@ import { TProduct } from "../../../utils/types/product.interface";
 import Container from "../../ui/Container";
 import Title from "../../ui/Title";
 import { Link } from "react-router-dom";
-import useScrollToTop from "../../../utils-hooks-React/hooks/useScrollToTop";
+import useScrollToTop from "../../../utils-hooks-ts-React/hooks/useScrollToTop";
 
 const Products = () => {
     // const { data: products, error, isLoading } = useGetProductsQuery(undefined);

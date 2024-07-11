@@ -1,9 +1,32 @@
 import { AiFillPlusSquare } from "react-icons/ai";
 import { MdCategory, MdDashboard, MdDashboardCustomize } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
-import useScrollToTop from "../../utils-hooks-React/hooks/useScrollToTop";
+import useScrollToTop from "../../utils-hooks-ts-React/hooks/useScrollToTop";
+import { useQuery } from "@tanstack/react-query";
+
 const Admin = () => {
     useScrollToTop();
+
+    // data fatcing
+    const {
+        isPending: isPendingProducts,
+        error: errorProducts,
+        data: productData,
+        refetch: refetchProducts,
+    } = useQuery({
+        queryKey: ["products"],
+        queryFn: async () =>
+            await publicAxios.get(`/stats`).then((res) => {
+                return res.data;
+            }),
+    });
+
+    if (isPendingProducts || errorProducts) {
+        // console.log(isPending)
+        // console.log(isError)
+        <div>Loading....</div>;
+    }
+
     return (
         <div className=" h-[calc(100vh-80px)]">
             <div className="flex">
