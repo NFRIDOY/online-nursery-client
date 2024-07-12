@@ -9,6 +9,10 @@
     @apply btn btn-primary md:btn-secondary text-black;
 }
 
+.h-navbar {
+    @apply h-[calc(100vh-80px)]
+}
+
 /* *{
     border: 1px solid red;
 } */

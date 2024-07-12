@@ -179,7 +179,38 @@ const AdminDashboard = () => {
                 </div>
             </div>
             <div className="h-1/2">
-            
+                {/* <div style={{ width: "100%", height: 300 }}>
+                    <ResponsiveContainer>
+                        <PieChart>
+                            <Pie
+                                dataKey="value"
+                                data={data}
+                                // fill={{pr}}
+                                label
+                                className="bg-primary"
+                            />
+                        </PieChart>
+                    </ResponsiveContainer>
+                </div> */}
+                <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                        width={500}
+                        height={300}
+                        data={data}
+                        margin={{
+                            top: 0,
+                            right: 30,
+                            left: 20,
+                            bottom: 20,
+                        }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        {/* <Tooltip content={<CustomTooltip />} /> */}
+                        <Legend />
+                        <Bar dataKey="pv" barSize={30} fill="#32CD32" />
+                    </BarChart>
+                </ResponsiveContainer>
             </div>
         </div>
     );

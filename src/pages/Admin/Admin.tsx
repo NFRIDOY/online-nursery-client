@@ -3,6 +3,7 @@ import { MdCategory, MdDashboard, MdDashboardCustomize } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useScrollToTop from "../../utils-hooks-ts-React/hooks/useScrollToTop";
 import { useQuery } from "@tanstack/react-query";
+import { RiPlantLine } from "react-icons/ri";
 
 const Admin = () => {
     useScrollToTop();
@@ -28,9 +29,9 @@ const Admin = () => {
     }
 
     return (
-        <div className=" h-[calc(100vh-80px)]">
+        <div className="h-navbar min-h-screen">
             <div className="flex">
-                <div className="bg-primary h-[calc(100vh-80px)] w-20 flex ">
+                <div className="bg-primary min-h-screen w-20 flex ">
                     <ul className="menu space-y-2 w-full">
                         <li>
                             <NavLink
@@ -55,7 +56,7 @@ const Admin = () => {
                                         ? "active btn btn-accent md:btn-accent text-white "
                                         : "btn btn-neutral text-white"
                                 }>
-                                <AiFillPlusSquare size={30} />
+                                <RiPlantLine size={30} />
                             </NavLink>
                         </li>
                         <li>
@@ -73,7 +74,7 @@ const Admin = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="w-full">
+                <div className="w-full h-full">
                     <Outlet />
                 </div>
             </div>
