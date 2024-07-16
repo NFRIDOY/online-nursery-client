@@ -1,102 +1,177 @@
-import { useForm, SubmitHandler } from "react-hook-form";
+import { FormEvent, useState } from "react";
+import useAxios from "../../hooks/useAxios";
 
 export type TInventory = {
     quantity: number;
     inStock: boolean;
 };
 
-type Inputs = {
-    image: string;
-    title: string;
-    description: string;
-    price: number;
-    category: string;
-    inventory: TInventory;
-    rating: number;
-    isDeleted: boolean;
-};
 export default function AddProductForm() {
-    const {
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-    } = useForm<Inputs>();
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        console.log(data);
+    const [title, setTitle] = useState("");
+    const [price, setPrice] = useState("");
+    const [image, setImage] = useState("");
+    const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("");
+    const [quantity, setQuantity] = useState("");
+    const [rating, setRating] = useState("");
+
+    // declare
+    const publicAxios = useAxios();
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        const formData = {
+            title,
+            price: parseFloat(price),
+            image,
+            description,
+            category,
+            inventory: {
+                quantity: parseFloat(quantity),
+                inStock: parseFloat(quantity) ? true : false,
+            },
+            rating: parseFloat(rating),
+        };
+        console.log("Form Data:", formData);
+        // Send Data to server
+        publicAxios.post("/products", formData).then((res) => {
+            console.log(res);
+        });
+        // if(result)
     };
 
-    console.log(watch("title")); // watch input value by passing the name of it
     return (
-        <div>
+        <div className="w-full">
             {/* "handleSubmit" will validate your inputs before invoking
             "onSubmit" */}
-            <form onSubmit={handleSubmit(onSubmit)}>
-                {/* register your input into the hook by invoking the "register" function */}
-                <input defaultValue="test" {...register("title")} />
-
-                {/* include validation with required or other standard HTML validation rules */}
-                <input {...register("price", { required: true })} />
-                {/* errors will return when field validation fails  */}
-                {/* {errors.priceRequired && <span>This field is required</span>} */}
-
-                <input type="submit" />
-            </form>
             <section className=" w-full">
                 <div className="w-full bg-white rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8 w-full border-0">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl w-full">
-                            Sign in to your account
+                            Add Plant To Inventory
                         </h1>
-                        <form
-                            className="space-y-4 md:space-y-3 w-full"
-                            onSubmit={handleSubmit(onSubmit)}>
-                            <div>
-                                <label
-                                    htmlFor="title"
-                                    className="block mb-2 text-sm font-medium text-gray-900">
-                                    Title
-                                </label>
-                                <input
-                                    type="text"
-                                    id="title"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
-                                    placeholder="Title"
-                                    defaultValue=""
-                                    {...register("title", { required: true })}
-                                />
+                        <form onSubmit={handleSubmit}>
+                            <div className="gap-y-2 gap-x-2 mb-2 w-full grid grid-cols-2 ">
+                                <div>
+                                    <label
+                                        htmlFor="title"
+                                        className="block mb-2 text-sm font-medium text-gray-900">
+                                        Title
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="title"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                                        placeholder="Title"
+                                        value={title}
+                                        onChange={(e) =>
+                                            setTitle(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        htmlFor="price"
+                                        className="block mb-2 text-sm font-medium text-gray-900">
+                                        Price
+                                    </label>
+                                    <input
+                                        type="number"
+                                        id="price"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                                        placeholder="Price"
+                                        value={price}
+                                        onChange={(e) =>
+                                            setPrice(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        htmlFor="image"
+                                        className="block mb-2 text-sm font-medium text-gray-900">
+                                        Image URL
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="image"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                                        placeholder="Image"
+                                        value={image}
+                                        onChange={(e) =>
+                                            setImage(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        htmlFor="description"
+                                        className="block mb-2 text-sm font-medium text-gray-900">
+                                        Description
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="description"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                                        placeholder="Description"
+                                        value={description}
+                                        onChange={(e) =>
+                                            setDescription(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        htmlFor="category"
+                                        className="block mb-2 text-sm font-medium text-gray-900">
+                                        Category
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="category"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                                        placeholder="Category"
+                                        value={category}
+                                        onChange={(e) =>
+                                            setCategory(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        htmlFor="quantity"
+                                        className="block mb-2 text-sm font-medium text-gray-900">
+                                        Quantity
+                                    </label>
+                                    <input
+                                        type="number"
+                                        id="quantity"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                                        placeholder="Quantity"
+                                        value={quantity}
+                                        onChange={(e) =>
+                                            setQuantity(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        htmlFor="rating"
+                                        className="block mb-2 text-sm font-medium text-gray-900">
+                                        Rating
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="rating"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                                        placeholder="Rating"
+                                        value={rating}
+                                        onChange={(e) =>
+                                            setRating(e.target.value)
+                                        }
+                                    />
+                                </div>
                             </div>
-                            <div>
-                                <label
-                                    htmlFor="price"
-                                    className="block mb-2 text-sm font-medium text-gray-900">
-                                    Price
-                                </label>
-                                <input
-                                    type="text"
-                                    id="price"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
-                                    placeholder="Price"
-                                    defaultValue=""
-                                    {...register("price", { required: true })}
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    htmlFor="price"
-                                    className="block mb-2 text-sm font-medium text-gray-900">
-                                    Imege URL
-                                </label>
-                                <input
-                                    type="text"
-                                    id="image"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
-                                    placeholder="Image"
-                                    defaultValue=""
-                                    {...register("image", { required: true })}
-                                />
-                            </div>
-
                             <button
                                 type="submit"
                                 className="w-full text-white bg-primary hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
