@@ -23,7 +23,7 @@ export default function AddCategoryForm() {
         // You can add your form submission logic here, like sending the data to an API
 
         // Send Data to server
-        publicAxios.post("/products", formData).then((res) => {
+        publicAxios.post("/category", formData).then((res) => {
             console.log(res);
             if (res?.data?.success) {
                 console.log("Success");

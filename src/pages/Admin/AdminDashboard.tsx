@@ -42,50 +42,50 @@ const AdminDashboard = () => {
         <div>Loading....</div>;
     }
 
-    const data = [
-        {
-            name: "Products",
-            uv: 4000,
-            pv: statsData?.data?.totalProducts, // data
-            amt: 2400,
-        },
-        {
-            name: "Category",
-            uv: 3000,
-            pv: statsData?.data?.totalCategory,
-            amt: 2210,
-        },
-        {
-            name: "Orders",
-            uv: 2000,
-            pv: statsData?.data?.totalOrders,
-            amt: 2290,
-        },
-        // {
-        //     name: "Page D",
-        //     uv: 2780,
-        //     pv: 3908,
-        //     amt: 2000,
-        // },
-        // {
-        //     name: "Page E",
-        //     uv: 1890,
-        //     pv: 4800,
-        //     amt: 2181,
-        // },
-        // {
-        //     name: "Page F",
-        //     uv: 2390,
-        //     pv: 3800,
-        //     amt: 2500,
-        // },
-        // {
-        //     name: "Page G",
-        //     uv: 3490,
-        //     pv: 4300,
-        //     amt: 2100,
-        // },
-    ];
+    // const data = [
+    //     {
+    //         name: "Products",
+    //         uv: 4000,
+    //         pv: statsData?.data?.totalProducts, // data
+    //         amt: 2400,
+    //     },
+    //     {
+    //         name: "Category",
+    //         uv: 3000,
+    //         pv: statsData?.data?.totalCategory,
+    //         amt: 2210,
+    //     },
+    //     {
+    //         name: "Orders",
+    //         uv: 2000,
+    //         pv: statsData?.data?.totalOrders,
+    //         amt: 2290,
+    //     },
+    //     // {
+    //     //     name: "Page D",
+    //     //     uv: 2780,
+    //     //     pv: 3908,
+    //     //     amt: 2000,
+    //     // },
+    //     // {
+    //     //     name: "Page E",
+    //     //     uv: 1890,
+    //     //     pv: 4800,
+    //     //     amt: 2181,
+    //     // },
+    //     // {
+    //     //     name: "Page F",
+    //     //     uv: 2390,
+    //     //     pv: 3800,
+    //     //     amt: 2500,
+    //     // },
+    //     // {
+    //     //     name: "Page G",
+    //     //     uv: 3490,
+    //     //     pv: 4300,
+    //     //     amt: 2100,
+    //     // },
+    // ];
 
     // const getIntroOfPage = (label) => {
     //     if (label === "Products") {
