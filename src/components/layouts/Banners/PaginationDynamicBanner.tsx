@@ -11,6 +11,7 @@ import "swiper/css/effect-fade";
 // import required modules
 import { Pagination, EffectFade, Autoplay } from "swiper/modules";
 import { bannersLinks } from "../../../utils/bannersLinks";
+import { Link } from "react-router-dom";
 
 const PaginationDynamicBanner = () => {
     return (
@@ -50,9 +51,9 @@ const PaginationDynamicBanner = () => {
                     Plants A Part Of <br />
                     <span>Your Life</span>
                 </h1>
-                <div>
-                    <button className="btn btn-accent">Shop Now</button>
-                </div>
+                {/* <div className="z-50">
+                    <Link to={"/AllProducts"} className="btn btn-accent ">Shop Now</Link>
+                </div> */}
             </div>
         </div>
     );

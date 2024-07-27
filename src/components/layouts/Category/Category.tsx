@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../hooks/useAxios";
-import ProductCard from "./ProductCard";
 import { TProduct } from "../../../utils/types/product.interface";
 import Container from "../../ui/Container";
 import Title from "../../ui/Title";
 import { Link } from "react-router-dom";
 import useScrollToTop from "../../../utils-hooks-ts-React/hooks/useScrollToTop";
+import ProductCard from "../Products/ProductCard";
 
-const Products = () => {
+export default function Category() {
     // const { data: products, error, isLoading } = useGetProductsQuery(undefined);
     useScrollToTop();
 
@@ -20,31 +20,46 @@ const Products = () => {
     // } = useQuery({ queryKey: ["products"], queryFn: getProducts });
 
     const {
-        isPending: isPendingProducts,
-        error: errorProducts,
-        data: productData,
-        refetch: refetchProducts,
+        isPending: isPendingCategory,
+        error: errorCategory,
+        data: categoryData,
+        refetch: refetchCategory,
     } = useQuery({
-        queryKey: ["products"],
+        queryKey: ["category"],
         queryFn: async () =>
-            await publicAxios.get(`/products`).then((res) => {
+            await publicAxios.get(`/category`).then((res) => {
                 return res.data;
             }),
     });
 
-    if (isPendingProducts || errorProducts) {
+    if (isPendingCategory || errorCategory) {
         // console.log(isPending)
         // console.log(isError)
         <div>Loading....</div>;
     }
-    console.log(productData);
+    console.log(categoryData);
     return (
         <Container>
-            <Title>All Plants</Title>
+            <Title>All Category</Title>
             <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 ">
-                {productData?.data?.slice(0, 6)?.map((product: TProduct) => (
+                {categoryData?.data?.slice(0, 6)?.map((category) => (
                     <>
-                        <ProductCard product={product} />
+                        {/* <ProductCard product={product} /> */}
+                        <Link to={`${category?._id}`} className="flex items-center gap-3">
+                            <div className="avatar">
+                                <div className="mask mask-squircle h-12 w-12">
+                                    <img
+                                        src={category?.image}
+                                        alt="Avatar Tailwind CSS Component"
+                                    />
+                                </div>
+                            </div>
+                            <div>
+                                <div className="font-bold">
+                                    {category?.title}
+                                </div>
+                            </div>
+                        </Link>
                     </>
                 ))}
             </div>
@@ -56,6 +71,4 @@ const Products = () => {
             </div>
         </Container>
     );
-};
-
-export default Products;
+}
