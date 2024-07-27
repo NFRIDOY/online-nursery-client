@@ -15,6 +15,8 @@ import {
 } from "recharts";
 import useAxios from "../../hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
+import AddProductForm from "../../components/ui/AddProductForm";
+import AddCategoryForm from "../../components/ui/AddCategoryForm";
 
 // import PaginationDynamicBanner from "./../../components/layouts/Banners/PaginationDynamicBanner";
 const AdminDashboard = () => {
@@ -85,27 +87,27 @@ const AdminDashboard = () => {
         // },
     ];
 
-    const getIntroOfPage = (label) => {
-        if (label === "Products") {
-            return "Products is about men's clothing";
-        }
-        if (label === "Category") {
-            return "Category is about women's dress";
-        }
-        if (label === "Orders") {
-            return "Orders is about women's bag";
-        }
-        if (label === "Page D") {
-            return "Page D is about household goods";
-        }
-        if (label === "Page E") {
-            return "Page E is about food";
-        }
-        if (label === "Page F") {
-            return "Page F is about baby food";
-        }
-        return "";
-    };
+    // const getIntroOfPage = (label) => {
+    //     if (label === "Products") {
+    //         return "Products is about men's clothing";
+    //     }
+    //     if (label === "Category") {
+    //         return "Category is about women's dress";
+    //     }
+    //     if (label === "Orders") {
+    //         return "Orders is about women's bag";
+    //     }
+    //     if (label === "Page D") {
+    //         return "Page D is about household goods";
+    //     }
+    //     if (label === "Page E") {
+    //         return "Page E is about food";
+    //     }
+    //     if (label === "Page F") {
+    //         return "Page F is about baby food";
+    //     }
+    //     return "";
+    // };
 
     // const CustomTooltip = ({ active, payload, label }) => {
     //     if (active && payload && payload.length) {
@@ -178,8 +180,13 @@ const AdminDashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className="h-1/2">
-            
+            <div className="h-1/2 flex flex-col lg:flex-row justify-between items-center w-fit border-0 mx-auto">
+                <div className="w-full mt-10 ml-10">
+                    <AddProductForm />
+                </div>
+                <div className="w-full mt-10 ml-10">
+                    <AddCategoryForm />
+                </div>
             </div>
         </div>
     );

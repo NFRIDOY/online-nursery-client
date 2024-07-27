@@ -1,5 +1,5 @@
-import { FormEvent, useState } from "react";
-import useAxios from "../../hooks/useAxios";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { TProduct } from "../../utils/types/product.interface";
 
 export type TInventory = {
     quantity: number;
@@ -7,46 +7,22 @@ export type TInventory = {
 };
 
 export default function AddProductForm() {
-    const [title, setTitle] = useState("");
-    const [price, setPrice] = useState("");
-    const [image, setImage] = useState("");
-    const [description, setDescription] = useState("");
-    const [category, setCategory] = useState("");
-    const [quantity, setQuantity] = useState("");
-    const [rating, setRating] = useState("");
-
-    // declare
-    const publicAxios = useAxios();
-
-    const handleSubmit = (e: FormEvent) => {
-        e.preventDefault();
-        const formData = {
-            title,
-            price: parseFloat(price),
-            image,
-            description,
-            category,
-            inventory: {
-                quantity: parseFloat(quantity),
-                inStock: parseFloat(quantity) ? true : false,
-            },
-            rating: parseFloat(rating),
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm<TProduct>();
+    const onSubmit: SubmitHandler<TProduct> = (data) => {
+        console.log(data);
+        const plantData = {
+            ...data,
         };
-        console.log("Form Data:", formData);
-        // Send Data to server
-        publicAxios.post("/products", formData).then((res) => {
-            console.log(res);
-            if (res?.data?.success) {
-                console.log("Success");
-            } else {
-                console.log("Something went wrong::", res);
-            }
-        });
-        // if(result)
     };
 
+    console.log(watch("title")); // watch input value by passing the name of it
     return (
-        <div className="w-full">
+        <div>
             {/* "handleSubmit" will validate your inputs before invoking
             "onSubmit" */}
             <section className=" w-full">
@@ -55,7 +31,7 @@ export default function AddProductForm() {
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl w-full">
                             Add Plant To Inventory
                         </h1>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="gap-y-2 gap-x-2 mb-2 w-full grid grid-cols-2 ">
                                 <div>
                                     <label
@@ -68,10 +44,9 @@ export default function AddProductForm() {
                                         id="title"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                         placeholder="Title"
-                                        value={title}
-                                        onChange={(e) =>
-                                            setTitle(e.target.value)
-                                        }
+                                        {...register("title", {
+                                            required: true,
+                                        })}
                                     />
                                 </div>
                                 <div>
@@ -85,32 +60,32 @@ export default function AddProductForm() {
                                         id="price"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                         placeholder="Price"
-                                        value={price}
-                                        onChange={(e) =>
-                                            setPrice(e.target.value)
-                                        }
+                                        defaultValue=""
+                                        {...register("price", {
+                                            valueAsNumber: true,
+                                        })}
                                     />
                                 </div>
                                 <div>
                                     <label
                                         htmlFor="image"
                                         className="block mb-2 text-sm font-medium text-gray-900">
-                                        Image URL
+                                        Imege URL
                                     </label>
                                     <input
                                         type="text"
                                         id="image"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                         placeholder="Image"
-                                        value={image}
-                                        onChange={(e) =>
-                                            setImage(e.target.value)
-                                        }
+                                        defaultValue=""
+                                        {...register("image", {
+                                            required: true,
+                                        })}
                                     />
                                 </div>
                                 <div>
                                     <label
-                                        htmlFor="description"
+                                        htmlFor="price"
                                         className="block mb-2 text-sm font-medium text-gray-900">
                                         Description
                                     </label>
@@ -119,10 +94,10 @@ export default function AddProductForm() {
                                         id="description"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                         placeholder="Description"
-                                        value={description}
-                                        onChange={(e) =>
-                                            setDescription(e.target.value)
-                                        }
+                                        defaultValue=""
+                                        {...register("description", {
+                                            required: true,
+                                        })}
                                     />
                                 </div>
                                 <div>
@@ -136,32 +111,32 @@ export default function AddProductForm() {
                                         id="category"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                         placeholder="Category"
-                                        value={category}
-                                        onChange={(e) =>
-                                            setCategory(e.target.value)
-                                        }
+                                        defaultValue=""
+                                        {...register("category", {
+                                            required: true,
+                                        })}
                                     />
                                 </div>
                                 <div>
                                     <label
                                         htmlFor="quantity"
                                         className="block mb-2 text-sm font-medium text-gray-900">
-                                        Quantity
+                                        quantity
                                     </label>
                                     <input
                                         type="number"
                                         id="quantity"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
-                                        placeholder="Quantity"
-                                        value={quantity}
-                                        onChange={(e) =>
-                                            setQuantity(e.target.value)
-                                        }
+                                        placeholder="quantity"
+                                        defaultValue=""
+                                        {...register("quantity", {
+                                            valueAsNumber: true,
+                                        })}
                                     />
                                 </div>
                                 <div>
                                     <label
-                                        htmlFor="rating"
+                                        htmlFor="price"
                                         className="block mb-2 text-sm font-medium text-gray-900">
                                         Rating
                                     </label>
@@ -170,13 +145,14 @@ export default function AddProductForm() {
                                         id="rating"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                         placeholder="Rating"
-                                        value={rating}
-                                        onChange={(e) =>
-                                            setRating(e.target.value)
-                                        }
+                                        defaultValue=""
+                                        {...register("rating", {
+                                            valueAsNumber: true,
+                                        })}
                                     />
                                 </div>
                             </div>
+
                             <button
                                 type="submit"
                                 className="w-full text-white bg-primary hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">

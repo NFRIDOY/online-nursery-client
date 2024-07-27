@@ -10,6 +10,7 @@ export default function Home() {
             <div className="">
                 <Products />
             </div>
+            <div></div>
         </div>
     );
 }

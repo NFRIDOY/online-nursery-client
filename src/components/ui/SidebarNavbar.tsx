@@ -1,4 +1,4 @@
-import { FaSearch, FaShoppingCart } from "react-icons/fa";
+import { FaSearch, FaShoppingCart, FaUserAlt } from "react-icons/fa";
 import { GiTreeBranch } from "react-icons/gi";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
@@ -94,35 +94,36 @@ export default function SidebarNavbar({ children }) {
                         tabIndex={0}
                         role="button"
                         className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
+                        {/*  <div className="w-10 rounded-full">
                             <img
                                 alt="Tailwind CSS Navbar component"
                                 src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                            />
-                        </div>
+                            /> 
+                        </div>*/}
+                        <FaUserAlt size={30} className="text-secondary" />
                     </div>
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[11] mt-3 w-52 p-2 shadow space-y-3">
                         <li>
                             <Link to={"/"} className="btn btn-secondary btn-sm">
-                                Profile
+                                Home
                             </Link>
                         </li>
                         <li>
                             <Link
                                 to={"/admin/dashboard"}
                                 className="btn btn-secondary btn-sm">
-                                Admin
+                                Admin Dashboard
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link
                                 to={"/"}
                                 className="btn btn-error text-white btn-sm">
                                 Logout
                             </Link>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>
@@ -156,7 +157,7 @@ export default function SidebarNavbar({ children }) {
                         <GiTreeBranch size={50} />
                         <span className="text-black font-black">Nursy</span>
                     </div>
-                    
+
                     <div className="flex justify-center items-center z-50">
                         <div className="hidden flex-none lg:block">
                             <ul className="menu menu-horizontal md:space-x-2">
