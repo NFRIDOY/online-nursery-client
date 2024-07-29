@@ -18,8 +18,13 @@ const ProductCard = ({ product }) => {
                     </div>
                 </h2>
                 <p>{product?.description}</p>
-                <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
+                <div className="flex justify-between">
+                    <div className="card-actions justify-start">
+                        <button className="bg-secondary size-12 font-bold rounded-full">{product?.rating}</button>
+                    </div>
+                    <div className="card-actions justify-end">
+                        <button className="btn btn-primary">Buy Now</button>
+                    </div>
                 </div>
             </div>
         </div>

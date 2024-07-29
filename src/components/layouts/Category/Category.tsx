@@ -64,9 +64,9 @@ export default function Category() {
                 ))}
             </div>
             <div className="flex justify-center items-center my-8">
-                <Link to={"/products"} className="btn btn-secondary">
+                <Link to={"/category"} className="btn btn-secondary">
                     {" "}
-                    See More
+                    More Categories 
                 </Link>
             </div>
         </Container>

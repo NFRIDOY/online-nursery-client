@@ -153,10 +153,10 @@ export default function SidebarNavbar({ children }) {
                             </svg>
                         </label>
                     </div>
-                    <div className="mx-2 flex-1 px-2">
-                        <GiTreeBranch size={50} />
-                        <span className="text-black font-black">Nursy</span>
-                    </div>
+                    <Link to={"/"} className="mx-2 flex-1 px-2">
+                        <GiTreeBranch size={50}  />
+                        <span className="text-black font-black text-3xl">Nursy</span>
+                    </Link>
 
                     <div className="flex justify-center items-center z-50">
                         <div className="hidden flex-none lg:block">

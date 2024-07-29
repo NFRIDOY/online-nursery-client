@@ -125,23 +125,7 @@ export default function AddProductForm() {
                                         }
                                     />
                                 </div>
-                                <div>
-                                    <label
-                                        htmlFor="category"
-                                        className="block mb-2 text-sm font-medium text-gray-900">
-                                        Category
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="category"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
-                                        placeholder="Category"
-                                        value={category}
-                                        onChange={(e) =>
-                                            setCategory(e.target.value)
-                                        }
-                                    />
-                                </div>
+
                                 <div>
                                     <label
                                         htmlFor="quantity"
@@ -173,6 +157,23 @@ export default function AddProductForm() {
                                         value={rating}
                                         onChange={(e) =>
                                             setRating(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        htmlFor="category"
+                                        className="block mb-2 text-sm font-medium text-gray-900 w-full">
+                                        Category
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="category"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                                        placeholder="Category"
+                                        value={category}
+                                        onChange={(e) =>
+                                            setCategory(e.target.value)
                                         }
                                     />
                                 </div>
