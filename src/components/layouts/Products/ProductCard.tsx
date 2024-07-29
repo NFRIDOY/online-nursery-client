@@ -1,14 +1,18 @@
+import { Link } from "react-router-dom";
+
 // import TProduct from "../../../utils/types/product.interface.ts"
 const ProductCard = ({ product }) => {
     return (
         <div className="card card-compact bg-base-100  max-h-96 my-auto w-48 md:w-72 shadow-xl mx-auto">
-            <figure>
-                <img
-                    src={product?.image}
-                    alt={product?.title}
-                    className="object-cover h-40 w-full"
-                />
-            </figure>
+            <Link to={`/${product?._id}`}>
+                <figure>
+                    <img
+                        src={product?.image}
+                        alt={product?.title}
+                        className="object-cover h-40 w-full"
+                    />
+                </figure>
+            </Link>
             <div className="card-body">
                 <h2 className="card-title flex justify-between items-center">
                     {product?.title}
@@ -20,7 +24,9 @@ const ProductCard = ({ product }) => {
                 <p>{product?.description}</p>
                 <div className="flex justify-between">
                     <div className="card-actions justify-start">
-                        <button className="bg-secondary size-12 font-bold rounded-full">{product?.rating}</button>
+                        <button className="bg-secondary size-12 font-bold rounded-full">
+                            {product?.rating}
+                        </button>
                     </div>
                     <div className="card-actions justify-end">
                         <button className="btn btn-primary">Buy Now</button>

@@ -1,5 +1,7 @@
 import { FormEvent, useState } from "react";
 import useAxios from "../../hooks/useAxios";
+import { useQuery } from "@tanstack/react-query";
+import { TCategory } from "../../utils/types/category.interface";
 
 export type TInventory = {
     quantity: number;
@@ -11,12 +13,31 @@ export default function AddProductForm() {
     const [price, setPrice] = useState("");
     const [image, setImage] = useState("");
     const [description, setDescription] = useState("");
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState();
     const [quantity, setQuantity] = useState("");
     const [rating, setRating] = useState("");
 
     // declare
     const publicAxios = useAxios();
+
+    // fatching category
+    const {
+        isPending: isPendingCategory,
+        error: errorCategory,
+        data: categoryData,
+        refetch: refetchCategory,
+    } = useQuery({
+        queryKey: ["category"],
+        queryFn: async () =>
+            await publicAxios.get(`/category`).then((res) => {
+                return res.data;
+            }),
+    });
+
+    // Find the selected category object by ID
+    const selectedCategory = categoryData?.data?.find(
+        (categoryObj: TCategory) => categoryObj._id === category
+    );
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
@@ -25,7 +46,7 @@ export default function AddProductForm() {
             price: parseFloat(price),
             image,
             description,
-            category,
+            category: selectedCategory,
             inventory: {
                 quantity: parseFloat(quantity),
                 inStock: parseFloat(quantity) ? true : false,
@@ -166,7 +187,29 @@ export default function AddProductForm() {
                                         className="block mb-2 text-sm font-medium text-gray-900 w-full">
                                         Category
                                     </label>
-                                    <input
+
+                                    <div>
+                                        <select
+                                            value={category}
+                                            onChange={(e) =>
+                                                setCategory(e.target.value)
+                                            }
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
+                                            {categoryData?.data?.map(
+                                                (categoryObj) => (
+                                                    <option
+                                                        key={categoryObj?._id}
+                                                        value={
+                                                            categoryObj?._id
+                                                        }>
+                                                        {categoryObj?.title}
+                                                    </option>
+                                                )
+                                            )}
+                                        </select>
+                                    </div>
+
+                                    {/* <input
                                         type="text"
                                         id="category"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
@@ -175,7 +218,7 @@ export default function AddProductForm() {
                                         onChange={(e) =>
                                             setCategory(e.target.value)
                                         }
-                                    />
+                                    /> */}
                                 </div>
                             </div>
                             <button
