@@ -5,7 +5,6 @@ import { TProduct } from "../utils/types/product.interface";
 import ProductCard from "../components/layouts/Products/ProductCard";
 import Title from "../components/ui/Title";
 
-
 const AllProducts = () => {
     // const { data: products, error, isLoading } = useGetProductsQuery(undefined);
 
@@ -24,10 +23,12 @@ const AllProducts = () => {
             }),
     });
 
-    if (isPendingProducts || errorProducts) {
+    if (isPendingProducts) {
         // console.log(isPending)
         // console.log(isError)
-        <div>Loading....</div>;
+        <div>
+            <span className="loading loading-dots loading-xs"></span>
+        </div>;
     }
     console.log(productData);
     return (

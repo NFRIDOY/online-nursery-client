@@ -1,11 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../hooks/useAxios";
-import { TProduct } from "../../../utils/types/product.interface";
 import Container from "../../ui/Container";
 import Title from "../../ui/Title";
 import { Link } from "react-router-dom";
 import useScrollToTop from "../../../utils-hooks-ts-React/hooks/useScrollToTop";
-import ProductCard from "../Products/ProductCard";
 
 export default function Category() {
     // const { data: products, error, isLoading } = useGetProductsQuery(undefined);
@@ -40,12 +38,14 @@ export default function Category() {
     console.log(categoryData);
     return (
         <Container>
-            <Title>All Category</Title>
+            {categoryData && <Title>All Category</Title>}
             <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 ">
                 {categoryData?.data?.slice(0, 6)?.map((category) => (
                     <>
                         {/* <ProductCard product={product} /> */}
-                        <Link to={`${category?._id}`} className="flex items-center gap-3">
+                        <Link
+                            to={`${category?._id}`}
+                            className="flex items-center gap-3">
                             <div className="avatar">
                                 <div className="mask mask-squircle h-12 w-12">
                                     <img
@@ -63,12 +63,14 @@ export default function Category() {
                     </>
                 ))}
             </div>
-            <div className="flex justify-center items-center my-8">
-                <Link to={"/category"} className="btn btn-secondary">
-                    {" "}
-                    More Categories 
-                </Link>
-            </div>
+            {categoryData?.data?.length > 6 ? (
+                <div className="flex justify-center items-center my-8">
+                    <Link to={"/category"} className="btn btn-secondary">
+                        {" "}
+                        More Categories
+                    </Link>
+                </div>
+            ) : null}
         </Container>
     );
 }

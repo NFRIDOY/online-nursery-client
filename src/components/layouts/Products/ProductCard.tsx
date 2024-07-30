@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ product }) => {
     return (
         <div className="card card-compact bg-base-100  max-h-96 my-auto w-48 md:w-72 shadow-xl mx-auto">
-            <Link to={`/${product?._id}`}>
+            <Link to={`/products/${product?._id}`}>
                 <figure>
                     <img
                         src={product?.image}
@@ -14,14 +14,14 @@ const ProductCard = ({ product }) => {
                 </figure>
             </Link>
             <div className="card-body">
-                <h2 className="card-title flex justify-between items-center">
+                <Link to={`/products/${product?._id}`} className="card-title flex justify-between items-center">
                     {product?.title}
                     <div className="">
                         BDT.{" "}
                         <span className="text-primary">{product?.price}</span>
                     </div>
-                </h2>
-                <p>{product?.description}</p>
+                </Link>
+                <Link to={`/products/${product?._id}`}>{product?.description}</Link>
                 <div className="flex justify-between">
                     <div className="card-actions justify-start">
                         <button className="bg-secondary size-12 font-bold rounded-full">
