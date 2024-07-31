@@ -38,8 +38,8 @@ export default function Category() {
     console.log(categoryData);
     return (
         <Container>
-            {categoryData && <Title>All Category</Title>}
-            <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 ">
+            {/* {categoryData && <Title>All Category</Title>} */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 mt-10">
                 {categoryData?.data?.slice(0, 6)?.map((category) => (
                     <>
                         {/* <ProductCard product={product} /> */}

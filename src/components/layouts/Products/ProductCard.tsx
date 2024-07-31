@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
                     <img
                         src={product?.image}
                         alt={product?.title}
-                        className="object-cover h-40 w-full"
+                        className="object-cover h-40 w-full rounded-2xl"
                     />
                 </figure>
             </Link>
