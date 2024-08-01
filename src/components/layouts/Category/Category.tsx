@@ -44,7 +44,7 @@ export default function Category() {
                     <>
                         {/* <ProductCard product={product} /> */}
                         <Link
-                            to={`${category?._id}`}
+                            to={`category/${category?._id}`}
                             className="flex items-center gap-3">
                             <div className="avatar">
                                 <div className="mask mask-squircle h-12 w-12">
