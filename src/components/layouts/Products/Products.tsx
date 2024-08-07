@@ -44,14 +44,14 @@ const Products = () => {
                 productData && <Title>All Plants</Title>
             }
             <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 ">
-                {productData?.data?.slice(0, 6)?.map((product: TProduct) => (
+                {productData?.data?.slice(0, 8)?.map((product: TProduct) => (
                     <>
                         <ProductCard product={product} />
                     </>
                 ))}
             </div>
             {
-                productData?.data?.length > 6 ? <div className="flex justify-center items-center my-8">
+                productData?.data?.length > 8 ? <div className="flex justify-center items-center my-8">
                 <Link to={"/products"} className="btn btn-secondary">
                     {" "}
                     See More

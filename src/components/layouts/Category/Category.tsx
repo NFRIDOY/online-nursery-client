@@ -40,7 +40,7 @@ export default function Category() {
         <Container>
             {/* {categoryData && <Title>All Category</Title>} */}
             <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 mt-10">
-                {categoryData?.data?.slice(0, 6)?.map((category) => (
+                {categoryData?.data?.slice(0, 8)?.map((category) => (
                     <>
                         {/* <ProductCard product={product} /> */}
                         <Link
@@ -63,7 +63,7 @@ export default function Category() {
                     </>
                 ))}
             </div>
-            {categoryData?.data?.length > 6 ? (
+            {categoryData?.data?.length > 8 ? (
                 <div className="flex justify-center items-center my-8">
                     <Link to={"/category"} className="btn btn-secondary">
                         {" "}
