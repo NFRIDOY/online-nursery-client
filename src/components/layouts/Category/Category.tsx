@@ -39,13 +39,13 @@ export default function Category() {
     return (
         <Container>
             {/* {categoryData && <Title>All Category</Title>} */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 mt-10">
+            <div className="grid grid-cols-2 lg:grid-cols-6 md:gap-y-10  justify-center items-center w-full border-0 mt-10">
                 {categoryData?.data?.slice(0, 8)?.map((category) => (
                     <>
                         {/* <ProductCard product={product} /> */}
                         <Link
                             to={`category/${category?._id}`}
-                            className="flex items-center gap-3">
+                            className="flex items-center gap-3 mx-0">
                             <div className="avatar">
                                 <div className="mask mask-squircle h-12 w-12">
                                     <img
