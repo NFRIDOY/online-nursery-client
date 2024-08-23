@@ -2,6 +2,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { TProduct } from "../../../utils/types/product.interface";
 import { useState } from "react";
 import useAxios from "../../../hooks/useAxios";
+import { useQuery } from "@tanstack/react-query";
+import { TCategory } from "../../../utils/types/category.interface";
 
 export type TInventory = {
     quantity: number;
@@ -39,25 +41,69 @@ export type TInventory = {
 // };
 
 export default function UpdateProductForm({ id, product }) {
+    const publicAxios = useAxios();
+
+    const [category, setCategory] = useState();
+
+    // fatching category
+    const {
+        isPending: isPendingCategory,
+        error: errorCategory,
+        data: categoryData,
+        refetch: refetchCategory,
+    } = useQuery({
+        queryKey: ["category"],
+        queryFn: async () =>
+            await publicAxios.get(`/category`).then((res) => {
+                return res.data;
+            }),
+    });
+
+    // Find the selected category object by ID
+    const selectedCategory = categoryData?.data?.find(
+        (categoryObj: TCategory) => categoryObj._id === category
+    );
+
     const {
         register,
         handleSubmit,
         watch,
         formState: { errors },
     } = useForm<TProduct>();
-    const onSubmit: SubmitHandler<TProduct> = (data) => {
+    const onSubmit: SubmitHandler<TProduct> = async (data) => {
         console.log(data);
         const plantData = {
             ...data,
         };
+        console.log(plantData);
+        try {
+            const response = await publicAxios.put(
+                `/products/${id}`,
+                plantData
+            );
+            console.log(response);
+        } catch (error) {
+            console.log("Error Updating Product");
+        }
     };
-    const publicAxios = useAxios();
 
-    const handleUpdate = (e) => {
-        e.preventDefault();
-    }
+    // const handleUpdate = (e) => {
+    //     e.preventDefault();
+    // }
 
-    console.log(watch("price")); // watch input value by passing the name of it
+    // const onSubmit = async (data) => {
+    //     try {
+    //         const response = await axios.put(
+    //             "https://api.example.com/resource",
+    //             data
+    //         );
+    //         console.log("Success:", response.data);
+    //     } catch (error) {
+    //         console.error("Error:", error.response?.data || error.message);
+    //     }
+    // };
+
+    // console.log(watch("price")); // watch input value by passing the name of it
 
     const imageUrl = watch("image");
 
@@ -149,20 +195,43 @@ export default function UpdateProductForm({ id, product }) {
                                 <div>
                                     <label
                                         htmlFor="category"
-                                        className="block mb-2 text-sm font-medium text-gray-900">
+                                        className="block mb-2 text-sm font-medium text-gray-900 w-full">
                                         Category
                                     </label>
-                                    <input
+
+                                    <div>
+                                        <select
+                                            value={category}
+                                            onChange={(e) =>
+                                                setCategory(e.target.value)
+                                            }
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
+                                            {categoryData?.data?.map(
+                                                (categoryObj) => (
+                                                    <option
+                                                        key={categoryObj?._id}
+                                                        value={
+                                                            categoryObj?._id
+                                                        }>
+                                                        {categoryObj?.title}
+                                                    </option>
+                                                )
+                                            )}
+                                        </select>
+                                    </div>
+
+                                    {/* <input
                                         type="text"
                                         id="category"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                         placeholder="Category"
-                                        defaultValue={product?.title}
-                                        {...register("category", {
-                                            required: true,
-                                        })}
-                                    />
+                                        value={category}
+                                        onChange={(e) =>
+                                            setCategory(e.target.value)
+                                        }
+                                    /> */}
                                 </div>
+                                
                                 <div>
                                     <label
                                         htmlFor="quantity"
