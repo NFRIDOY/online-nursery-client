@@ -123,7 +123,6 @@ export default function AddProductForm() {
                                         id="image"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                         placeholder="Image"
-                                        
                                         value={image}
                                         onChange={(e) =>
                                             setImage(e.target.value)

@@ -8,6 +8,7 @@ import AdminDashboard from "../pages/Admin/AdminDashboard";
 import ManageProducts from "../pages/Admin/ManageProducts";
 import ProductDetails from './../pages/ProductDetails';
 import ProductsByCategory from "../pages/ProductsByCategory";
+import UpdateProduct from "../pages/Admin/UpdateProduct";
 
 
 export const router = createBrowserRouter([
@@ -46,6 +47,11 @@ export const router = createBrowserRouter([
                     {
                         path: "products",
                         element: <ManageProducts />,
+                    },
+                    {
+                        path: "product/update/:id",
+                        element: <UpdateProduct />,
+                        // element: <ProductDetails />,
                     },
                 ],
             },

@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Title from "../../ui/Title";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ProductsTable = () => {
     const [productList, setProductList] = useState([]);
@@ -35,7 +36,6 @@ const ProductsTable = () => {
     const handleChange = (value) => {
         setInput(value);
         // fetchData(value);
-        
     };
 
     return (
@@ -122,7 +122,9 @@ const ProductsTable = () => {
                                 {product?.description}
                             </button>
                         </th>
-                        <td>d</td>
+                        <td>
+                            <Link to={`/admin/product/update/${product?._id}`} className="btn btn-primary">Update</Link>
+                        </td>
                     </tr>
                 ))}
             </tbody>
