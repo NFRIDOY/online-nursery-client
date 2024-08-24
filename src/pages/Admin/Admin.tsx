@@ -4,6 +4,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import useScrollToTop from "../../utils-hooks-ts-React/hooks/useScrollToTop";
 import { useQuery } from "@tanstack/react-query";
 import { RiPlantLine } from "react-icons/ri";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Admin = () => {
     useScrollToTop();
@@ -72,6 +73,20 @@ const Admin = () => {
                                 <MdCategory size={30} />
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to="/admin/orders"
+                                className={({ isActive, isPending }) =>
+                                    isPending
+                                        ? "pending"
+                                        : isActive
+                                        ? "active btn btn-accent md:btn-accent text-white "
+                                        : "btn btn-neutral text-white"
+                                }>
+                                    <FaShoppingCart size={30} />
+                            </NavLink>
+                        </li>
+                        
                     </ul>
                 </div>
                 <div className="w-full h-full">
