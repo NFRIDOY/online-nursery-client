@@ -1,4 +1,3 @@
-import ProductsTable from "../../components/layouts/Products/ProductsTable";
 import Title from "../../components/ui/Title";
 
 export default function ManageOrders() {
