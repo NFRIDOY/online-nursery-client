@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { TProduct } from "../../../utils/types/product.interface";
-import { addToCart } from "../../../redux/cartSlice/cartSlice";
+import { addToCart } from "../../../redux/features/cartSlice/cartSlice";
 // import { RootState } from "../../../redux/store";
 
 export interface ProductCardProps {

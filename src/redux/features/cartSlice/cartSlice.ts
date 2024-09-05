@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { TProduct } from "../../utils/types/product.interface";
+import { TProduct } from "../../../utils/types/product.interface";
 
-export interface CartState {
+export interface ICart {
     products: TProduct[];
     totalAmount: number;
 }
 
-const initialState: CartState = {
+const initialState: ICart = {
     products: [],
     totalAmount: 0,
 };
