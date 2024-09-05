@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { TProduct } from "../../../utils/types/product.interface";
-import { addToCart } from "../../../redux/orderSlice/orderSlice";
+import { addToCart } from "../../../redux/cartSlice/cartSlice";
 // import { RootState } from "../../../redux/store";
 
 export interface ProductCardProps {
@@ -9,8 +9,6 @@ export interface ProductCardProps {
 }
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => { // what is the prb?
     const dispatch = useDispatch();
-    // const cartItems = useSelector((state: RootState) => state.cart.products);
-    // console.log(cartItems)
     const handleAddToCart = (product: TProduct) => {
         dispatch(addToCart({...product, quantity: 1}))
         console.log("product added")

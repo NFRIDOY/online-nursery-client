@@ -1,9 +1,14 @@
 import { FaSearch, FaShoppingCart, FaUserAlt } from "react-icons/fa";
 import { GiTreeBranch } from "react-icons/gi";
 import { RiDeleteBack2Fill } from "react-icons/ri";
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+import { RootState } from "../../redux/store";
 
 export default function SidebarNavbar({ children }) {
+    const cartItems = useSelector((state: RootState) => state.cart.products);
+    const totalAmount = useSelector((state: RootState) => state.cart.totalAmount);
+    // console.log(cartItems);
     const menu = (
         <>
             <li>
@@ -79,11 +84,14 @@ export default function SidebarNavbar({ children }) {
                         tabIndex={0}
                         className="card card-compact dropdown-content bg-base-100 z-[11] mt-3 w-52 shadow">
                         <div className="card-body">
-                            <span className="text-lg font-bold">8 Items</span>
-                            <span className="text-info">Subtotal: $999</span>
+                            <span className="text-lg font-bold">
+                                <span className="mx-1">{cartItems?.length}</span>
+                                Items
+                            </span>
+                            <span className="text-primary text-xl">Subtotal: ৳{totalAmount}</span>
                             <div className="card-actions">
                                 <button className="btn btn-primary btn-block">
-                                    View cart
+                                    View Cart
                                 </button>
                             </div>
                         </div>
@@ -154,8 +162,10 @@ export default function SidebarNavbar({ children }) {
                         </label>
                     </div>
                     <Link to={"/"} className="mx-2 flex-1 px-2">
-                        <GiTreeBranch size={50}  />
-                        <span className="text-black font-black text-3xl">Nursy</span>
+                        <GiTreeBranch size={50} />
+                        <span className="text-black font-black text-3xl">
+                            Nursy
+                        </span>
                     </Link>
 
                     <div className="flex justify-center items-center z-50">
