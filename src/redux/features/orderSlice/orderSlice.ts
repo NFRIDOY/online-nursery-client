@@ -7,6 +7,7 @@ export interface IOrder extends ICart {
     customerId?: string;
     customerName: string;
     customerPhone: string;
+    customerEmail: string;
     customerAddress: string; // TODO: this should be a object of strings
     deliveryFee: number;
     grandTotal: number;
@@ -17,6 +18,7 @@ const initialState: IOrder = {
     totalAmount: 0,
     customerName: "",
     customerPhone: "",
+    customerEmail: "",
     customerAddress: "",
     deliveryFee: 100,
     grandTotal: 0,

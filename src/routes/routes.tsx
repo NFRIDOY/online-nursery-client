@@ -10,6 +10,8 @@ import ProductDetails from "./../pages/ProductDetails";
 import ProductsByCategory from "../pages/ProductsByCategory";
 import UpdateProduct from "../pages/Admin/UpdateProduct";
 import ManageOrders from "../pages/Admin/ManageOrders";
+import CartPage from "../pages/CartPage";
+import ConfirmOrderPage from "../pages/ConfirmOrderPage";
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +37,14 @@ export const router = createBrowserRouter([
             {
                 path: `products/:id`,
                 element: <ProductDetails />,
+            },
+            {
+                path: "cart",
+                element: <CartPage />
+            },
+            {
+                path: "confimOrder",
+                element: <ConfirmOrderPage />
             },
             {
                 path: "admin",

@@ -7,7 +7,9 @@ import { RootState } from "../../redux/store";
 
 export default function SidebarNavbar({ children }) {
     const cartItems = useSelector((state: RootState) => state.cart.products);
-    const totalAmount = useSelector((state: RootState) => state.cart.totalAmount);
+    const totalAmount = useSelector(
+        (state: RootState) => state.cart.totalAmount
+    );
     const order = useSelector((state: RootState) => state.order);
     console.log(order);
     const menu = (
@@ -86,15 +88,25 @@ export default function SidebarNavbar({ children }) {
                         className="card card-compact dropdown-content bg-base-100 z-[11] mt-3 w-52 shadow">
                         <div className="card-body">
                             <span className="text-lg font-bold">
-                                <span className="mx-1">{cartItems?.length}</span>
+                                <span className="mx-1">
+                                    {cartItems?.length}
+                                </span>
                                 Items
                             </span>
-                            <span className="text-primary text-xl">Subtotal: ৳{totalAmount}</span>
-                            <div className="card-actions">
-                                <button className="btn btn-primary btn-block">
-                                    View Cart
-                                </button>
-                            </div>
+                            <span className="text-primary text-xl">
+                                Subtotal: ৳{totalAmount}
+                            </span>
+                            {cartItems.length === 0 ? (
+                                ""
+                            ) : (
+                                <div className="card-actions">
+                                    <Link
+                                        to={"/cart"}
+                                        className="btn btn-primary btn-block">
+                                        View Cart
+                                    </Link>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
