@@ -8,7 +8,8 @@ import { RootState } from "../../redux/store";
 export default function SidebarNavbar({ children }) {
     const cartItems = useSelector((state: RootState) => state.cart.products);
     const totalAmount = useSelector((state: RootState) => state.cart.totalAmount);
-    // console.log(cartItems);
+    const order = useSelector((state: RootState) => state.order);
+    console.log(order);
     const menu = (
         <>
             <li>
