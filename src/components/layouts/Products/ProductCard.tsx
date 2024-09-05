@@ -1,7 +1,19 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { TProduct } from "../../../utils/types/product.interface";
+import { addToCart } from "../../../redux/orderSlice/orderSlice";
+import { RootState } from "../../../redux/store";
 
 // import TProduct from "../../../utils/types/product.interface.ts"
 const ProductCard = ({ product }) => {
+    const dispatch = useDispatch();
+    const cartItems = useSelector((state: RootState) => state.cart.products);
+    console.log(cartItems)
+    const handleAddToCart = (product: TProduct) => {
+        dispatch(addToCart({...product, quantity: 1}))
+        console.log("product added")
+    }
+
     return (
         <div className="card card-compact bg-base-100  max-h-96 my-auto w-48 md:w-72 shadow-xl mx-auto">
             <Link to={`/products/${product?._id}`}>
@@ -14,14 +26,18 @@ const ProductCard = ({ product }) => {
                 </figure>
             </Link>
             <div className="card-body">
-                <Link to={`/products/${product?._id}`} className="card-title flex justify-between items-center">
+                <Link
+                    to={`/products/${product?._id}`}
+                    className="card-title flex justify-between items-center">
                     {product?.title}
                     <div className="">
                         BDT.{" "}
                         <span className="text-primary">{product?.price}</span>
                     </div>
                 </Link>
-                <Link to={`/products/${product?._id}`}>{product?.description}</Link>
+                <Link to={`/products/${product?._id}`}>
+                    {product?.description}
+                </Link>
                 <div className="flex justify-between">
                     <div className="card-actions justify-start">
                         <button className="bg-secondary size-12 font-bold rounded-full">
@@ -29,7 +45,7 @@ const ProductCard = ({ product }) => {
                         </button>
                     </div>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                        <button className="btn btn-primary" onClick={() => handleAddToCart(product)}>Buy Now</button>
                     </div>
                 </div>
             </div>

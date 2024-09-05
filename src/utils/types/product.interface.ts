@@ -1,3 +1,5 @@
+import { TCategory } from "./category.interface";
+
 export type category = {
     name: string;
 };
@@ -8,13 +10,14 @@ export type TInventory = {
 };
 
 export type TProduct = {
+    _id?: string;
     image: string;
     title: string;
     description: string;
     price: number;
-    category: string;
     quantity: number;
-    inStock: boolean;
-    rating: number;
+    category?: TCategory | category;
+    inventory: TInventory;
+    rating: number | string;
     isDeleted: boolean;
 };
