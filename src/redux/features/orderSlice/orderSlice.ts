@@ -9,8 +9,8 @@ export interface IOrder extends ICart {
     customerPhone: string;
     customerEmail: string;
     customerAddress: string; // TODO: this should be a object of strings
-    deliveryFee: number;
-    grandTotal: number;
+    deliveryFee?: number;
+    grandTotal?: number;
 }
 
 const initialState: IOrder = {
