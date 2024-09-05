@@ -4,8 +4,6 @@ import { TProduct } from "../../../utils/types/product.interface";
 import { addToCart } from "../../../redux/orderSlice/orderSlice";
 // import { RootState } from "../../../redux/store";
 
-// import TProduct from "../../../utils/types/product.interface.ts"
-
 export interface ProductCardProps {
     product: TProduct; // Define the type of product here
 }
