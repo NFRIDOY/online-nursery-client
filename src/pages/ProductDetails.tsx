@@ -1,10 +1,13 @@
 import { useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/features/cartSlice/cartSlice";
 
 const ProductDetails = () => {
     const { id } = useParams<{ id: string }>();
     const publicAxios = useAxios();
+    const dispatch = useDispatch();
 
     const {
         isPending: isPendingProducts,
@@ -50,7 +53,8 @@ const ProductDetails = () => {
                         <span className="font-semibold">Quantity:</span>{" "}
                         {product?.inventory?.quantity}
                     </div>
-                    <button className="btn btn-primary w-full">Buy Now</button>
+                    {/* <button className="btn btn-primary w-full">Buy Now</button> */}
+                    <button className="btn btn-primary w-full" onClick={() => dispatch(addToCart({...product, quantity: 1}))}>Buy Now</button>
                 </div>
             </div>
         </div>

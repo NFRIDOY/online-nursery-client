@@ -9,10 +9,10 @@ export interface ProductCardProps {
 }
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => { // what is the prb?
     const dispatch = useDispatch();
-    const handleAddToCart = (product: TProduct) => {
-        dispatch(addToCart({...product, quantity: 1}))
-        console.log("product added")
-    }
+    // const handleAddToCart = (product: TProduct) => {
+    //     dispatch(addToCart({...product, quantity: 1}))
+    //     console.log("product added")
+    // }
 
     return (
         <div className="card card-compact bg-base-100  max-h-96 my-auto w-48 md:w-72 shadow-xl mx-auto">
@@ -45,7 +45,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => { // what is th
                         </button>
                     </div>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary" onClick={() => handleAddToCart(product)}>Buy Now</button>
+                        {/* <button className="btn btn-primary" onClick={() => handleAddToCart(product)}>Buy Now</button> */}
+                        <button className="btn btn-primary" onClick={() => dispatch(addToCart({...product, quantity: 1}))}>Buy Now</button>
                     </div>
                 </div>
             </div>
