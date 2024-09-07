@@ -34,17 +34,19 @@ export const orderSlice = createSlice({
             state.customerName = action.payload?.customerName;
             state.customerPhone = action.payload?.customerPhone;
             state.customerAddress = action.payload?.customerAddress;
-            state.deliveryFee = action.payload?.deliveryFee;
-            state.grandTotal = action.payload.totalAmount + action.payload.deliveryFee;
+            state.deliveryFee = 100;
+            state.grandTotal = action.payload.totalAmount + 100;
         },
 
         cancelOrder: () => initialState,
 
         deleteOrder: () => initialState,
+
+        resetOrder: () => initialState,
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { confirmOrder, cancelOrder, deleteOrder } = orderSlice.actions;
+export const { confirmOrder, cancelOrder, deleteOrder, resetOrder } = orderSlice.actions;
 
 export default orderSlice.reducer;

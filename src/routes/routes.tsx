@@ -33,6 +33,7 @@ export const router = createBrowserRouter([
             {
                 path: "products",
                 element: <AllProducts />,
+                errorElement: <div>Somting Went Wrong!</div>,
             },
             {
                 path: `products/:id`,
@@ -40,11 +41,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: "cart",
-                element: <CartPage />
+                element: <CartPage />,
             },
             {
                 path: "confimOrder",
-                element: <ConfirmOrderPage />
+                element: <ConfirmOrderPage />,
             },
             {
                 path: "admin",

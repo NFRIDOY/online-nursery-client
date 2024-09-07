@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { Link } from "react-router-dom";
-import { removeFromCart } from "../../../redux/features/cartSlice/cartSlice";
+import { addToCart, decrementQuantity, removeFromCart } from "../../../redux/features/cartSlice/cartSlice";
 
 const Cart = () => {
     const { products, totalAmount } = useSelector(
@@ -40,9 +40,36 @@ const Cart = () => {
                                     {product?.title}
                                 </h3>
                                 <p className="text-gray-700 mt-1">
-                                    ৳{product?.price}
+                                    ৳{product?.price * product?.quantity}
                                 </p>
+                                <div className="flex justify-center items-center gap-2">
+                                    <button
+                                        className="btn btn-secondary btn-xs"
+                                        onClick={() =>
+                                            dispatch(
+                                                decrementQuantity(product?._id as string)
+                                            )
+                                        }>
+                                        -
+                                    </button>
+                                    <p className="text-gray-700 mt-1">
+                                        {product?.quantity}
+                                    </p>
+                                    <button
+                                        className="btn btn-secondary btn-xs"
+                                        onClick={() =>
+                                            dispatch(
+                                                addToCart({
+                                                    ...product,
+                                                    quantity: 1,
+                                                })
+                                            )
+                                        }>
+                                        +
+                                    </button>
+                                </div>
                             </div>
+
                             <button
                                 className="ml-auto py-2 px-4 bg-error hover:bg-red-800 text-white rounded-lg"
                                 onClick={() =>

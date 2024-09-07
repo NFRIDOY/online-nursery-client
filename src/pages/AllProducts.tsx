@@ -100,9 +100,9 @@ const AllProducts = () => {
             </div> */}
             <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 ">
                 {productData?.data?.map((product: TProduct) => (
-                    <>
+                    <div key={product?._id}>
                         <ProductCard product={product} />
-                    </>
+                    </div>
                 ))}
             </div>
         </Container>

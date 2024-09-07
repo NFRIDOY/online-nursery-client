@@ -38,6 +38,7 @@ const MakeOrder = () => {
             ...cart,
             ...formData,
         });
+        console.log("Order registered====", order);
 
         // TODO: Navigate to payment page
     };
