@@ -7,7 +7,8 @@ import { addToCart } from "../../../redux/features/cartSlice/cartSlice";
 export interface ProductCardProps {
     product: TProduct; // Define the type of product here
 }
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => { // what is the prb?
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+    // what is the prb?
     const dispatch = useDispatch();
     // const handleAddToCart = (product: TProduct) => {
     //     dispatch(addToCart({...product, quantity: 1}))
@@ -46,7 +47,23 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => { // what is th
                     </div>
                     <div className="card-actions justify-end">
                         {/* <button className="btn btn-primary" onClick={() => handleAddToCart(product)}>Buy Now</button> */}
-                        <button className="btn btn-primary" onClick={() => dispatch(addToCart({...product, quantity: 1}))}>Buy Now</button>
+                        {product?.inventory.quantity ? (
+                            <button
+                                className="btn btn-primary"
+                                onClick={() =>
+                                    dispatch(
+                                        addToCart({ ...product, quantity: 1 })
+                                    )
+                                }>
+                                Buy Now
+                            </button>
+                        ) : (
+                            <button
+                                className="btn btn-primary"
+                                onClick={() => alert("Shock Out")}>
+                                Buy Now
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>
