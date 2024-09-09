@@ -17,6 +17,7 @@ const Cart = () => {
 
         console.log("Clicking");
     };
+    console.log("products ==>", products)
     return (
         <div>
             <form
@@ -73,7 +74,7 @@ const Cart = () => {
                             <button
                                 className="ml-auto py-2 px-4 bg-error hover:bg-red-800 text-white rounded-lg"
                                 onClick={() =>
-                                    dispatch(removeFromCart(product?._id))
+                                    dispatch(removeFromCart(product?._id as string))
                                 }>
                                 Remove
                             </button>

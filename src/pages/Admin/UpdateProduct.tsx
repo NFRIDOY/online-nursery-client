@@ -3,9 +3,8 @@ import UpdateProductForm from "../../components/ui/Forms/UpdateProductForm";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../hooks/useAxios";
 
-
 const UpdateProduct = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     // console.log(id)
 
     const publicAxios = useAxios();
@@ -23,13 +22,15 @@ const UpdateProduct = () => {
             }),
     });
 
-    console.log(productData?.data)
+    // console.log(productData?.data)
 
-    return <div className="flex justify-center items-center">
-        {/* UpdateProduct {id} */}
-    
-    <UpdateProductForm id={id} product={productData?.data} />
-    </div>;
+    return (
+        <div className="flex justify-center items-center">
+            {/* UpdateProduct {id} */}
+
+            <UpdateProductForm id={id} product={productData?.data} />
+        </div>
+    );
 };
 
 export default UpdateProduct;

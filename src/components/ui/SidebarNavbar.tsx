@@ -96,7 +96,7 @@ export default function SidebarNavbar({ children }) {
                             <span className="text-primary text-xl">
                                 Sub Total: ৳{totalAmount}
                             </span>
-                            {cartItems.length === 0 ? (
+                            {totalAmount === 0 ? (
                                 ""
                             ) : (
                                 <div className="card-actions">

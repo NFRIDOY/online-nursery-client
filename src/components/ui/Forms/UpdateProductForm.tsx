@@ -73,9 +73,21 @@ export default function UpdateProductForm({ id, product }) {
     const onSubmit: SubmitHandler<TProduct> = async (data) => {
         console.log(data);
         const plantData = {
-            ...data,
+            _id: data?._id,
+            image: data?.image,
+            title: data?.title,
+            description: data?.description,
+            price: data?.price,
+            category: data?.category,
+            rating: data?.rating,
+            isDeleted: data?.isDeleted,
+            // inventory.quantity: watch("quantity"),
+            inventory: {
+                quantity: watch("quantity"),
+                inStock: watch("quantity") != 0 ? true : false,
+            },
         };
-        console.log(plantData);
+        console.log("plantData => ", plantData);
         try {
             const response = await publicAxios.put(
                 `/products/${id}`,
@@ -86,24 +98,6 @@ export default function UpdateProductForm({ id, product }) {
             console.log("Error Updating Product");
         }
     };
-
-    // const handleUpdate = (e) => {
-    //     e.preventDefault();
-    // }
-
-    // const onSubmit = async (data) => {
-    //     try {
-    //         const response = await axios.put(
-    //             "https://api.example.com/resource",
-    //             data
-    //         );
-    //         console.log("Success:", response.data);
-    //     } catch (error) {
-    //         console.error("Error:", error.response?.data || error.message);
-    //     }
-    // };
-
-    // console.log(watch("price")); // watch input value by passing the name of it
 
     const imageUrl = watch("image");
 
@@ -231,12 +225,12 @@ export default function UpdateProductForm({ id, product }) {
                                         }
                                     /> */}
                                 </div>
-                                
+
                                 <div>
                                     <label
                                         htmlFor="quantity"
                                         className="block mb-2 text-sm font-medium text-gray-900">
-                                        quantity
+                                        In Stock Quantity
                                     </label>
                                     <input
                                         type="number"

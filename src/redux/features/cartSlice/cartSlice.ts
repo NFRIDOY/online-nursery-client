@@ -20,8 +20,8 @@ export const cartSlice = createSlice({
             const existingItem = state.products.find(
                 (item) => item._id === action.payload._id
             );
-            // if(1) {
-            if (existingItem?.inventory.quantity) {
+            // if (existingItem?.inventory.quantity) {
+            if (1) {
                 if (existingItem) {
                     existingItem.quantity += action.payload.quantity;
                 } else {

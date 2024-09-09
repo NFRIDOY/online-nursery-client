@@ -1,4 +1,4 @@
-import { FormEvent, useState, useEffect } from "react";
+import { FormEvent, useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import { TCategory } from "../../utils/types/category.interface";
@@ -13,31 +13,26 @@ export default function AddProductForm() {
     const [price, setPrice] = useState("");
     const [image, setImage] = useState("");
     const [description, setDescription] = useState("");
-    const [category, setCategory] = useState<string>(""); // Initialize as an empty string
+    const [category, setCategory] = useState();
     const [quantity, setQuantity] = useState("");
     const [rating, setRating] = useState("");
 
-    // Declare Axios instance
+    // declare
     const publicAxios = useAxios();
 
-    // Fetching categories
+    // fatching category
     const {
-        isLoading: isPendingCategory,
+        isPending: isPendingCategory,
         error: errorCategory,
         data: categoryData,
         refetch: refetchCategory,
     } = useQuery({
         queryKey: ["category"],
         queryFn: async () =>
-            await publicAxios.get(`/category`).then((res) => res.data),
+            await publicAxios.get(`/category`).then((res) => {
+                return res.data;
+            }),
     });
-
-    // Set the first category as default when data is loaded
-    useEffect(() => {
-        if (categoryData?.data?.length && !category) {
-            setCategory(""); // Initially, no category is selected
-        }
-    }, [categoryData, category]);
 
     // Find the selected category object by ID
     const selectedCategory = categoryData?.data?.find(
@@ -68,21 +63,21 @@ export default function AddProductForm() {
                 console.log("Something went wrong::", res);
             }
         });
+        // if(result)
     };
-
-    if (isPendingCategory) return <p>Loading categories...</p>;
-    if (errorCategory) return <p>Error loading categories.</p>;
 
     return (
         <div className="w-full">
-            <section className="w-full">
+            {/* "handleSubmit" will validate your inputs before invoking
+            "onSubmit" */}
+            <section className=" w-full">
                 <div className="w-full bg-white rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8 w-full border-0">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl w-full">
                             Add Plant To Inventory
                         </h1>
                         <form onSubmit={handleSubmit}>
-                            <div className="gap-y-2 gap-x-2 mb-2 w-full grid grid-cols-2">
+                            <div className="gap-y-2 gap-x-2 mb-2 w-full grid grid-cols-2 ">
                                 <div>
                                     <label
                                         htmlFor="title"
@@ -192,6 +187,7 @@ export default function AddProductForm() {
                                         className="block mb-2 text-sm font-medium text-gray-900 w-full">
                                         Category
                                     </label>
+
                                     <div>
                                         <select
                                             value={category}
@@ -199,11 +195,8 @@ export default function AddProductForm() {
                                                 setCategory(e.target.value)
                                             }
                                             className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
-                                            <option value="" disabled>
-                                                Select Category
-                                            </option>
                                             {categoryData?.data?.map(
-                                                (categoryObj: TCategory) => (
+                                                (categoryObj) => (
                                                     <option
                                                         key={categoryObj?._id}
                                                         value={
