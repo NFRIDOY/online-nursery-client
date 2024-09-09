@@ -16,13 +16,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     // }
 
     return (
-        <div className="card card-compact bg-base-100  max-h-96 my-auto w-48 md:w-72 shadow-xl mx-auto">
+        <div className="card card-compact bg-base-100  max-h-96 my-auto w-48 md:w-72 mx-auto shadow-md rounded-b-none border-b-4 border-b-primary">
             <Link to={`/products/${product?._id}`}>
                 <figure>
                     <img
                         src={product?.image}
                         alt={product?.title}
-                        className="object-cover h-40 w-full rounded-2xl"
+                        className="object-cover h-40 w-full rounded-2xl hover:scale-105 hover:transition-all hover:duration-200 hover:ease-in-out hover:delay-100"
                     />
                 </figure>
             </Link>
