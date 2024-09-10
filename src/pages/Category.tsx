@@ -50,7 +50,7 @@ const Category = () => {
                                 <div className="mask mask-squircle size-72">
                                     <img
                                         src={category?.image}
-                                        alt="Avatar Tailwind CSS Component"
+                                        alt={category?.title}
                                     />
                                 </div>
                             </div>

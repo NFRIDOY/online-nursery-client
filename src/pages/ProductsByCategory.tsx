@@ -72,35 +72,45 @@ const ProductsByCategory = () => {
     console.log(productData);
     return (
         <Container>
-            <Title>
-                <div
-                    className="flex justify-center gap-x-5">
-                    <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                            <img
-                                src={filteredProductsCategoryName?.image}
-                                alt="Avatar Tailwind CSS Component"
-                            />
+            {filteredProducts?.length > 0 && (
+                <Title>
+                    <div className="flex justify-center gap-x-5">
+                        <div className="avatar">
+                            <div className="mask mask-squircle h-12 w-12">
+                                <img
+                                    src={filteredProductsCategoryName?.image}
+                                    alt="Avatar Tailwind CSS Component"
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <div className="font-bold">
+                                {filteredProductsCategoryName?.title}
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <div className="font-bold">{filteredProductsCategoryName?.title}</div>
-                    </div>
-                </div>
-            </Title>
+                </Title>
+            )}
 
             {/* <div className="z-10 absolute top-20 left-20 lg:left-60 lg:right-0 w-[70%]">
                 {results && results.length > 0 && (
                     <SearchResultsList results={results} />
                 )}
             </div> */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 ">
-                {filteredProducts?.map((product: TProduct) => (
-                    <>
-                        <ProductCard product={product} />
-                    </>
-                ))}
-            </div>
+            {filteredProducts?.length ? (
+                <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 ">
+                    {filteredProducts?.map((product: TProduct) => (
+                        <>
+                            <ProductCard product={product} />
+                        </>
+                    ))}
+                </div>
+            ) : (
+                <div className="flex flex-col justify-center items-center h-[80vh] gap-y-6">
+                    <div className="text-4xl">No Plants Found</div>
+                    <Link to={"/category"} className="btn btn-primary">Go Back</Link>
+                </div>
+            )}
         </Container>
     );
 };
