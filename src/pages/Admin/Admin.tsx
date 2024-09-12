@@ -60,7 +60,7 @@ const Admin = () => {
                                 <RiPlantLine size={30} />
                             </NavLink>
                         </li>
-                        <li>
+                        {/* <li>
                             <NavLink
                                 to="/admin/category"
                                 className={({ isActive, isPending }) =>
@@ -72,7 +72,7 @@ const Admin = () => {
                                 }>
                                 <MdCategory size={30} />
                             </NavLink>
-                        </li>
+                        </li> */}
                         <li>
                             <NavLink
                                 to="/admin/orders"

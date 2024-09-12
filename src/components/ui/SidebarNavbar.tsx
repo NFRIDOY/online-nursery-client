@@ -27,7 +27,7 @@ export default function SidebarNavbar({ children }) {
                     Home
                 </NavLink>
             </li>
-            <li>
+            {/* <li>
                 <NavLink
                     to="/category"
                     className={({ isActive, isPending }) =>
@@ -39,7 +39,7 @@ export default function SidebarNavbar({ children }) {
                     }>
                     Category
                 </NavLink>
-            </li>
+            </li> */}
             <li>
                 <NavLink
                     to="/products"
