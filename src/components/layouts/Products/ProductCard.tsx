@@ -36,9 +36,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         <span className="text-primary">{product?.price}</span>
                     </div>
                 </Link>
-                <Link to={`/products/${product?._id}`}>
+                {/* <Link to={`/products/${product?._id}`}>
                     {product?.description}
-                </Link>
+                </Link> */}
                 <div className="flex justify-between">
                     <div className="card-actions justify-start">
                         <button className="bg-secondary size-12 font-bold rounded-full">

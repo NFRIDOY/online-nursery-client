@@ -47,10 +47,11 @@ const ProductOffers = () => {
                     }}
                     speed={1000}
                     modules={[EffectFade, Autoplay]}
-                    className="mySwiper md:h-[calc(100vh-80px)] z-40">
-                    {productData?.data?.slice(0, 5)?.map((product) => (
+                    className="mySwiper z-40">
+                    {
+                    productData?.data?.slice(0, 5)?.map((product) => (
                         <>
-                            <SwiperSlide className="bg-secondary ">
+                            <SwiperSlide className="bg-secondary">
                                 <div className=" bg-gradient-to-r from-green-400 via-green-500 to-green-600 z-50">
                                     <div className="h-[600px] flex flex-col md:flex-row justify-between items-center mx-2 mb-10 md:mb-0 mt-2 md:mx-40">
                                         <div>
@@ -68,17 +69,7 @@ const ProductOffers = () => {
                     ))}
                 </Swiper>
             </div>
-            <div className="absolute text-2xl lg:text-7xl top-10 lg:top-[30%] left-10  lg:left-20 z-10 w-1/2 font-bold md:font-normal">
-                <h1>
-                    {/* Let's Make{" "}
-                    <span className=" text-white font-bold">Beautiful</span>{" "}
-                    Plants A Part Of <br />
-                    <span>Your Life</span> */}
-                </h1>
-                {/* <div className="z-50">
-                    <Link to={"/AllProducts"} className="btn btn-accent ">Shop Now</Link>
-                </div> */}
-            </div>
+            
         </div>
     );
 };

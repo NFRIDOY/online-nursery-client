@@ -8,12 +8,12 @@ import useScrollToTop from "../utils-hooks-ts-React/hooks/useScrollToTop";
 export default function Home() {
     useScrollToTop();
     return (
-        <div>
+        <div className="">
             <PaginationDynamicBanner />
             <div>
                 <Category />
             </div>
-            <div className="">
+            <div className="mb-5">
                 <Products />
             </div>
             <div>

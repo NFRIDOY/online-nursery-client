@@ -50,7 +50,7 @@ const ProductDetails = () => {
                         {product?.rating}
                     </div>
                     <div className="mb-4">
-                        <span className="font-semibold">Quantity:</span>{" "}
+                        <span className="font-semibold">In Stock:</span>{" "}
                         {product?.inventory?.quantity}
                     </div>
                     {/* <button className="btn btn-primary w-full">Buy Now</button> */}
