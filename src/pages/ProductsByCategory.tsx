@@ -5,7 +5,7 @@ import { TProduct } from "../utils/types/product.interface";
 import ProductCard from "../components/layouts/Products/ProductCard";
 import Title from "../components/ui/Title";
 import { SearchResultsList } from "../components/ui/SearchResultsList/SearchResultsList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { FaSearch } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
@@ -18,6 +18,9 @@ const ProductsByCategory = () => {
     // // Search for products
     const [input, setInput] = useState("");
     const [results, setResults] = useState([]);
+    const [filteredProducts, setFilteredProductsState] = useState();
+    const [filteredProductsCategoryName, setFilteredProductsCategoryNameState] =
+        useState();
 
     const {
         isPending: isPendingProducts,
@@ -55,12 +58,16 @@ const ProductsByCategory = () => {
     };
     refetchProducts();
 
-    const filteredProducts = productData?.data?.filter(
-        (product) => product?.category?._id === id
-    );
-    const filteredProductsCategoryName = productData?.data?.find(
-        (product) => product?.category?._id === id
-    );
+    useEffect(() => {
+        const filteredProducts = productData?.data?.filter(
+            (product: TProduct) => product?.category?._id === id
+        );
+        setFilteredProductsState(filteredProducts);
+        const filteredProductsCategoryName = productData?.data?.find(
+            (product: TProduct) => product?.category?._id === id
+        );
+        setFilteredProductsCategoryNameState(filteredProductsCategoryName);
+    }, []);
 
     if (isPendingProducts) {
         // console.log(isPending)
@@ -108,7 +115,9 @@ const ProductsByCategory = () => {
             ) : (
                 <div className="flex flex-col justify-center items-center h-[80vh] gap-y-6">
                     <div className="text-4xl">No Plants Found</div>
-                    <Link to={"/category"} className="btn btn-primary">Go Back</Link>
+                    <Link to={"/category"} className="btn btn-primary">
+                        Go Back
+                    </Link>
                 </div>
             )}
         </Container>

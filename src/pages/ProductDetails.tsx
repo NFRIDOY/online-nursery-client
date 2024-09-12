@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
@@ -32,7 +32,7 @@ const ProductDetails = () => {
     return (
         <div className="container mx-auto p-4">
             <div className="flex flex-col md:flex-row shadow-lg rounded-lg overflow-hidden">
-                <div className="md:w-1/2 md:max-h-screen">
+                <div className="md:w-1/2 md:max-h-[500px]">
                     <img
                         src={product?.image}
                         alt={product?.title}
@@ -40,7 +40,26 @@ const ProductDetails = () => {
                     />
                 </div>
                 <div className="md:w-1/2  p-4">
-                    <h1 className="text-2xl font-bold mb-2">{product?.title}</h1>
+                    <h1 className="text-3xl font-bold mb-2">
+                        {product?.title}
+                    </h1>
+                    <div
+                        // to={`../../category/${product?.category?._id}`}
+                        className="flex items-center gap-3 mx-0 w-fit my-10">
+                        <div className="avatar">
+                            <div className="mask mask-squircle h-12 w-12">
+                                <img
+                                    src={product?.category?.image}
+                                    alt={product?.category?.title}
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <div className="font-bold">
+                                {product?.category?.title}
+                            </div>
+                        </div>
+                    </div>
                     <div className="text-xl font-semibold text-primary mb-4">
                         BDT. {product?.price}
                     </div>
@@ -54,7 +73,13 @@ const ProductDetails = () => {
                         {product?.inventory?.quantity}
                     </div>
                     {/* <button className="btn btn-primary w-full">Buy Now</button> */}
-                    <button className="btn btn-primary w-full" onClick={() => dispatch(addToCart({...product, quantity: 1}))}>Buy Now</button>
+                    <button
+                        className="btn btn-primary w-full"
+                        onClick={() =>
+                            dispatch(addToCart({ ...product, quantity: 1 }))
+                        }>
+                        Buy Now
+                    </button>
                 </div>
             </div>
         </div>
