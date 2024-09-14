@@ -46,18 +46,26 @@ export const cartSlice = createSlice({
         },
         // id as payload for removing from cart
         decrementQuantity: (state, action: PayloadAction<string>) => {
-            const itemToRemove = state.products.find(
+            const itemToDecrement = state.products.find(
                 (item) => item._id === action.payload
             );
-
-            if (itemToRemove && itemToRemove?.quantity > 0) {
-                itemToRemove.quantity -= 1;
-                state.totalAmount -= itemToRemove.price * itemToRemove.quantity;
-                // state.products = state.products.filter(
-                //     (item) => item._id !== action.payload
-                // );
+        
+            if (itemToDecrement) {
+                // First decrement the quantity
+                itemToDecrement.quantity -= 1;
+        
+                // If quantity becomes 0, remove the item from the cart
+                if (itemToDecrement.quantity === 0) {
+                    state.products = state.products.filter(
+                        (item) => item._id !== action.payload
+                    );
+                }
+        
+                // Subtract the price from total amount after decrement
+                state.totalAmount -= itemToDecrement.price;
             }
         },
+        
         resetOrder: () => initialState,
         // decrement: (state) => {
         //     state.value -= 1;
