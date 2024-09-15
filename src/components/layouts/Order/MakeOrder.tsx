@@ -2,11 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { FormEvent, useState } from "react";
 import { confirmOrder } from "../../../redux/features/orderSlice/orderSlice";
+import useAxios from "../../../hooks/useAxios";
 
 const MakeOrder = () => {
     const order = useSelector((state: RootState) => state.order);
     const cart = useSelector((state: RootState) => state.cart);
     const dispatch = useDispatch();
+
+    const publicAxios = useAxios();
 
     // Create local state for the form fields
     const [formData, setFormData] = useState({
@@ -22,7 +25,7 @@ const MakeOrder = () => {
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
         // Dispatch action to update the order in Redux
@@ -40,7 +43,19 @@ const MakeOrder = () => {
         });
         console.log("Order registered====", order);
 
+        try {
+            const response = await publicAxios.post(
+                `/orders`,
+                order
+            );
+            console.log(response);
+        } catch (error) {
+            console.log("Error Updating Product");
+        }
+
         // TODO: Navigate to payment page
+
+        // 
     };
 
     return (
