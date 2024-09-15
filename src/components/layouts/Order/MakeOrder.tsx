@@ -3,6 +3,7 @@ import { RootState } from "../../../redux/store";
 import { FormEvent, useState } from "react";
 import { confirmOrder } from "../../../redux/features/orderSlice/orderSlice";
 import useAxios from "../../../hooks/useAxios";
+import Swal from "sweetalert2";
 
 const MakeOrder = () => {
     const order = useSelector((state: RootState) => state.order);
@@ -44,18 +45,23 @@ const MakeOrder = () => {
         console.log("Order registered====", order);
 
         try {
-            const response = await publicAxios.post(
-                `/orders`,
-                order
-            );
+            const response = await publicAxios.post(`/orders`, order);
             console.log(response);
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500,
+            });
         } catch (error) {
             console.log("Error Updating Product");
         }
 
         // TODO: Navigate to payment page
 
-        // 
+        //
     };
 
     return (
