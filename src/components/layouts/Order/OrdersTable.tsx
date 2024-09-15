@@ -5,32 +5,32 @@ import Title from "../../ui/Title";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { TProduct } from "../../../utils/types/product.interface";
+import { IOrder } from "../../../redux/features/orderSlice/orderSlice";
 
-const ProductsTable = () => {
-    const [productList, setProductList] = useState([]);
+const OrdersTable = () => {
+    const [orderList, setOrderList] = useState([]);
     const [input, setInput] = useState("");
 
     const publicAxios = useAxios();
     // useEffect(() => {
-    //     publicAxios.get("/products").then((res) => {
-    //         setProductList(res?.data?.data);
+    //     publicAxios.get("/orders").then((res) => {
+    //         setOrderList(res?.data?.data);
     //         // console.log(res?.data?.data);
     //     });
     // }, []);
 
     const {
-        isPending: isPendingProducts,
-        error: errorProducts,
-        data: productData,
-        refetch: refetchProducts,
+        isPending: isPendingOrders,
+        error: errorOrders,
+        data: orderData,
+        refetch: refetchOrders,
     } = useQuery({
-        queryKey: ["products", input],
+        queryKey: ["orders", input],
         queryFn: async () =>
-            await publicAxios
-                .get(`/products?searchTerm=${input}`)
-                .then((res) => {
-                    return res.data;
-                }),
+            await publicAxios.get(`/orders`).then((res) => {
+                return res.data;
+            }),
     });
 
     const handleChange = (value) => {
@@ -87,43 +87,51 @@ const ProductsTable = () => {
             </thead>
             <tbody>
                 {/* row 1 */}
-                {productData?.data?.map((product) => (
+                {orderData?.data?.map((order: IOrder) => (
                     <tr className="*:text-center ">
                         <td>
                             <div className="flex items-center gap-3 md:ml-10">
-                                <div className="avatar">
+                                {/* <div className="avatar">
                                     <div className="mask mask-squircle h-12 w-12">
                                         <img
-                                            src={product?.image}
+                                            src={order?.image}
                                             alt="Avatar Tailwind CSS Component"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div>
                                     <div className="font-bold">
-                                        {product?.title}
+                                        {order?.customerName}
                                     </div>
-                                    <div className="text-sm opacity-50 text-blue-700 font-bold">
-                                        Price: {product?.price}
+                                    <div className="text-sm opacity-50 text-red-600 font-bold">
+                                        Phone: {order?.customerPhone}
+                                    </div>
+                                    <div className="text-sm opacity-50 font-bold">
+                                        {order?.customerAddress}
                                     </div>
                                 </div>
                             </div>
                         </td>
                         <td>
-                            Quantity: {product?.inventory?.quantity}
-                            <br />
-                            <span className="text-primary">
-                                Category: {product?.title}
-                            </span>
+                            {order?.products?.map((product: TProduct) => (
+                                <>
+                                    <div key={product?.title}>
+                                        {product?.title}, {product?.quantity}
+                                    </div>
+                                </>
+                            ))}
                         </td>
-                        <td>{product?.rating}</td>
                         {/* <th className="w-fit">
                             <button className="w-fit">
-                                {product?.description}
+                                {order?.description}
                             </button>
                         </th> */}
                         <td>
-                            <Link to={`/admin/product/update/${product?._id}`} className="btn btn-primary">Update</Link>
+                            <Link
+                                to={`/admin/order/update/${order?._id}`}
+                                className="btn btn-primary">
+                                Update
+                            </Link>
                         </td>
                     </tr>
                 ))}
@@ -141,4 +149,4 @@ const ProductsTable = () => {
     );
 };
 
-export default ProductsTable;
+export default OrdersTable;
