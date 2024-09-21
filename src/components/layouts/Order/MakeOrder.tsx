@@ -18,6 +18,7 @@ const MakeOrder = () => {
         customerPhone: "",
         customerEmail: "",
         customerAddress: "",
+        status: "PENDING"
     });
 
     // Handle form input changes

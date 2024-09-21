@@ -26,6 +26,8 @@ export interface IOrder extends ICart {
     customerAddress: string; // TODO: this should be a object of strings
     deliveryFee?: number;
     grandTotal?: number;
+    status: string;
+    isDeleted: boolean;
 }
 
 // const initialState: IOrder = {
@@ -48,6 +50,8 @@ const initialState: IOrder = {
     customerAddress: "",
     deliveryFee: 100,
     grandTotal: 0,
+    status: "PENDING",
+    isDeleted: false
 };
 
 export const orderSlice = createSlice({
