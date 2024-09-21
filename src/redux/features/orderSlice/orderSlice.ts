@@ -3,6 +3,21 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { TProduct } from "../../../utils/types/product.interface";
 import { ICart } from "../cartSlice/cartSlice";
 
+export interface ICartIdQuantity {
+    _id: string;
+    quantity: string;
+}
+
+// export interface IOrder {
+//     customerId?: string;
+//     customerName: string;
+//     customerPhone: string;
+//     customerEmail: string;
+//     customerAddress: string; // TODO: this should be a object of strings
+//     cart: ICartIdQuantity[];
+//     // deliveryFee?: 100;
+//     grandTotal?: number;
+// }
 export interface IOrder extends ICart {
     customerId?: string;
     customerName: string;
@@ -12,6 +27,17 @@ export interface IOrder extends ICart {
     deliveryFee?: number;
     grandTotal?: number;
 }
+
+// const initialState: IOrder = {
+//     cart: [],
+//     // totalAmount: 0,
+//     customerName: "",
+//     customerPhone: "",
+//     customerEmail: "",
+//     customerAddress: "",
+//     deliveryFee: 100,
+//     grandTotal: 0,
+// };
 
 const initialState: IOrder = {
     products: [],
@@ -37,6 +63,15 @@ export const orderSlice = createSlice({
             state.deliveryFee = 100;
             state.grandTotal = action.payload.totalAmount + 100;
         },
+        // confirmOrder: (state, action: PayloadAction<IOrder>) => {
+        //     state.products = action.payload?.products;
+        //     state.totalAmount = action.payload?.totalAmount;
+        //     state.customerName = action.payload?.customerName;
+        //     state.customerPhone = action.payload?.customerPhone;
+        //     state.customerAddress = action.payload?.customerAddress;
+        //     state.deliveryFee = 100;
+        //     state.grandTotal = action.payload.totalAmount + 100;
+        // },
 
         cancelOrder: () => initialState,
 

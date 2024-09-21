@@ -29,13 +29,23 @@ const MakeOrder = () => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
+        
+
+        // desructure the cart product into product id + quantity
+
+        console.log("cart => ",cart)
+        const cartIdQuantity = cart?.products?.map(({_id, quantity}) => ({_id, quantity}))
+        console.log("cartIdQuantity => ",cartIdQuantity)
+
         // Dispatch action to update the order in Redux
         dispatch(
             confirmOrder({
+                // cart: cartIdQuantity,
                 ...cart,
                 ...formData,
             })
         );
+
 
         // console.log("Order registered:", formData);
         console.log("Order registered::::::::::::::::", {
@@ -46,12 +56,14 @@ const MakeOrder = () => {
 
         try {
             const response = await publicAxios.post(`/orders`, order);
-            console.log(response);
-
+            console.log("response: ",response);
+            if (!response) {
+                return;
+            }
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "Your work has been saved",
+                title: "Your order has been placed successfully",
                 showConfirmButton: false,
                 timer: 1500,
             });

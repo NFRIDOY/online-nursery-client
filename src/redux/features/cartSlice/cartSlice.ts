@@ -1,9 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { TProduct } from "../../../utils/types/product.interface";
+import { TInventory, TProduct } from "../../../utils/types/product.interface";
+import { TCategory } from "../../../utils/types/category.interface";
 
+export type IProduct = {
+    _id?: string;
+    image: string;
+    title: string;
+    description: string;
+    price: number;
+    quantity: number;
+    category?: TCategory;
+    inventory: TInventory;
+    rating: string;
+    isDeleted: boolean;
+};
 export interface ICart {
-    products: TProduct[];
+    products: IProduct[];
     totalAmount: number;
 }
 
@@ -16,12 +29,12 @@ export const cartSlice = createSlice({
     name: "Cart",
     initialState,
     reducers: {
-        addToCart: (state, action: PayloadAction<TProduct>) => {
+        addToCart: (state, action: PayloadAction<IProduct>) => {
             const existingItem = state.products.find(
                 (item) => item._id === action.payload._id
             );
             // if (existingItem?.inventory.quantity) {
-            if (1) {
+            if (true) {
                 if (existingItem) {
                     existingItem.quantity += action.payload.quantity;
                 } else {
