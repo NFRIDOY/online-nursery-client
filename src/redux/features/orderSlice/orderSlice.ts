@@ -25,8 +25,8 @@ export interface IOrder extends ICart {
     customerAddress: string; // TODO: this should be a object of strings
     deliveryFee?: number;
     grandTotal?: number;
-    status: string;
-    isDeleted: boolean;
+    status?: string;
+    isDeleted?: boolean;
 }
 
 // const initialState: IOrder = {
@@ -64,7 +64,6 @@ export const orderSlice = createSlice({
             state.customerName = action.payload?.customerName;
             state.customerPhone = action.payload?.customerPhone;
             state.customerAddress = action.payload?.customerAddress;
-            state.deliveryFee = 100;
             state.grandTotal = action.payload.totalAmount + 100;
         },
         // confirmOrder: (state, action: PayloadAction<IOrder>) => {

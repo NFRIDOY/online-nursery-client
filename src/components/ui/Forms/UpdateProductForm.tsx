@@ -47,10 +47,10 @@ export default function UpdateProductForm({ id, product }) {
 
     // fatching category
     const {
-        isPending: isPendingCategory,
-        error: errorCategory,
+        // isPending: isPendingCategory,
+        // error: errorCategory,
         data: categoryData,
-        refetch: refetchCategory,
+        // refetch: refetchCategory,
     } = useQuery({
         queryKey: ["category"],
         queryFn: async () =>
@@ -60,9 +60,9 @@ export default function UpdateProductForm({ id, product }) {
     });
 
     // Find the selected category object by ID
-    const selectedCategory = categoryData?.data?.find(
-        (categoryObj: TCategory) => categoryObj._id === category
-    );
+    // const selectedCategory = categoryData?.data?.find(
+    //     (categoryObj: TCategory) => categoryObj._id === category
+    // );
 
     const {
         register,

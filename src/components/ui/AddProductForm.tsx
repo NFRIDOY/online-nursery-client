@@ -25,7 +25,7 @@ export default function AddProductForm() {
         isLoading: isPendingCategory,
         error: errorCategory,
         data: categoryData,
-        refetch: refetchCategory,
+        // refetch: refetchCategory,
     } = useQuery({
         queryKey: ["category"],
         queryFn: async () =>

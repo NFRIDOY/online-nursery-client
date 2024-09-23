@@ -21,7 +21,7 @@ export default function Category() {
         isPending: isPendingCategory,
         error: errorCategory,
         data: categoryData,
-        refetch: refetchCategory,
+        // refetch: refetchCategory,
     } = useQuery({
         queryKey: ["category"],
         queryFn: async () =>

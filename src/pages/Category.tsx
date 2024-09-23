@@ -4,6 +4,7 @@ import Title from "../components/ui/Title";
 import useAxios from "../hooks/useAxios";
 import useScrollToTop from "../utils-hooks-ts-React/hooks/useScrollToTop";
 import { Link } from "react-router-dom";
+import { TCategory } from "../utils/types/category.interface";
 
 const Category = () => {
     // const { data: products, error, isLoading } = useGetProductsQuery(undefined);
@@ -21,7 +22,7 @@ const Category = () => {
         isPending: isPendingCategory,
         error: errorCategory,
         data: categoryData,
-        refetch: refetchCategory,
+        // refetch: refetchCategory,
     } = useQuery({
         queryKey: ["category"],
         queryFn: async () =>
@@ -40,7 +41,7 @@ const Category = () => {
         <Container>
             <Title>Categories</Title>
             <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-10  justify-center items-center w-full border-0 ">
-                {categoryData?.data?.slice(0, 6)?.map((category) => (
+                {categoryData?.data?.slice(0, 6)?.map((category: TCategory) => (
                     <>
                         {/* <ProductCard product={product} /> */}
                         <Link

@@ -18,7 +18,7 @@ const MakeOrder = () => {
         customerPhone: "",
         customerEmail: "",
         customerAddress: "",
-        status: "PENDING"
+        status: "PENDING",
     });
 
     // Handle form input changes
@@ -30,29 +30,28 @@ const MakeOrder = () => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-        
-
         // desructure the cart product into product id + quantity
 
         // console.log("cart => ",cart)
-        const cartIdQuantity = cart?.products?.map(({_id, quantity}) => ({_id, quantity}))
+        // const cartIdQuantity = cart?.products?.map(({ _id, quantity }) => ({
+        //     _id,
+        //     quantity,
+        // }));
         // console.log("cartIdQuantity => ",cartIdQuantity)
 
         // Dispatch action to update the order in Redux
         dispatch(
             confirmOrder({
-                cart: cartIdQuantity,
                 ...cart,
                 ...formData,
             })
         );
 
-
         // console.log("Order registered:", formData);
-        console.log("Order registered::::::::::::::::", {
-            ...cart,
-            ...formData,
-        });
+        // console.log("Order registered::::::::::::::::", {
+        //     ...cart,
+        //     ...formData,
+        // });
         // console.log("Order registered====", order);
 
         try {
