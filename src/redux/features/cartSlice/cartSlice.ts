@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { TInventory, TProduct } from "../../../utils/types/product.interface";
+import { TInventory} from "../../../utils/types/product.interface";
 import { TCategory } from "../../../utils/types/category.interface";
 
 export type IProduct = {

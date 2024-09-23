@@ -11,7 +11,6 @@ import "swiper/css/effect-fade";
 // import required modules
 import { Pagination, EffectFade, Autoplay } from "swiper/modules";
 import { bannersLinks } from "../../../utils/bannersLinks";
-import { Link } from "react-router-dom";
 
 const PaginationDynamicBanner = () => {
     return (

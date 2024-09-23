@@ -17,7 +17,19 @@ export type TProduct = {
     price: number;
     quantity: number;
     category?: TCategory | category;
-    inventory: TInventory;
+    inventory?: TInventory;
     rating: string;
     isDeleted: boolean;
 };
+
+// error solving for temporary 
+// const obj : TProduct ={ 
+//     _id:"1",
+//     image: "1",
+//     title: "1",
+//     description: "1",
+//     price: 1,
+//     quantity: 1,
+//     rating: "1",
+//     isDeleted: false,
+// }

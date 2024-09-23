@@ -1,16 +1,15 @@
-import { FaSearch, FaShoppingCart, FaUserAlt } from "react-icons/fa";
+import { FaShoppingCart, FaUserAlt } from "react-icons/fa";
 import { GiTreeBranch } from "react-icons/gi";
-import { RiDeleteBack2Fill } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { RootState } from "../../redux/store";
 
-export default function SidebarNavbar({ children }) {
+export default function SidebarNavbar({ children }: any) {
     const cartItems = useSelector((state: RootState) => state.cart.products);
     const totalAmount = useSelector(
         (state: RootState) => state.cart.totalAmount
     );
-    const order = useSelector((state: RootState) => state.order);
+    // const order = useSelector((state: RootState) => state.order);
     // console.log(order);
     const menu = (
         <>
