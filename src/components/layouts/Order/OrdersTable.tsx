@@ -38,6 +38,10 @@ const OrdersTable = () => {
         // fetchData(value);
     };
 
+    const handleOrder = (orderId) => {
+        console.log(orderId)
+    };
+
     return (
         <table className="table table-xs lg:table lg:table-xs ">
             {/* head */}
@@ -80,8 +84,7 @@ const OrdersTable = () => {
                 <tr className="*:text-center">
                     <th>Name</th>
                     <th>Category & Stock</th>
-                    <th>Rating</th>
-                    {/* <th className=" w-1">Description</th> */}
+                    <th>Grand Total</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -115,8 +118,29 @@ const OrdersTable = () => {
                         <td>
                             {order?.products?.map((product: TProduct) => (
                                 <>
-                                    <div key={product?.title}>
-                                        {product?.title}, {product?.quantity}
+                                    <div key={product?.title} className="my-3">
+                                        <div className="space-x-2">
+                                            <span>
+                                                {product?.title}
+                                                {" = "}
+                                            </span>
+                                            <span>
+                                                {product?.price}
+                                                {"/="}
+                                            </span>
+                                            <span>
+                                                {product?.quantity}
+                                                {" Pcs"}
+                                            </span>
+                                        </div>
+                                        {product?.inventory?.inStock ? (
+                                            <div className="text-green-600">
+                                                Available:{" "}
+                                                {product?.inventory?.quantity}
+                                            </div>
+                                        ) : (
+                                            "Stock Out"
+                                        )}
                                     </div>
                                 </>
                             ))}
@@ -127,11 +151,16 @@ const OrdersTable = () => {
                             </button>
                         </th> */}
                         <td>
-                            <Link
-                                to={`/admin/order/update/${order?._id}`}
+                            <div>{order?.grandTotal}</div>
+                        </td>
+                        <td>
+                            <button
+                                type="submit"
+                                // to={`/admin/order/update/${order?._id}`}
+                                onClick={() => handleOrder(order?._id)}
                                 className="btn btn-primary">
-                                Update
-                            </Link>
+                                Confimed
+                            </button>
                         </td>
                     </tr>
                 ))}

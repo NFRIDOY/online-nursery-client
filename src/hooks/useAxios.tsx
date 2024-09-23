@@ -4,7 +4,8 @@ import axios from "axios";
 // http://localhost:5000
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    // baseURL: 'http://localhost:5000/api',
+    baseURL: 'https://online-nursery-server-nine.vercel.app/api',
     // baseURL: "/api",
     // baseURL: import.meta.env.VITE_Server_API_URL,
 });

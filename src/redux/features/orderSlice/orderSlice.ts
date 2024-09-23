@@ -59,6 +59,7 @@ export const orderSlice = createSlice({
     initialState,
     reducers: {
         confirmOrder: (state, action: PayloadAction<IOrder>) => {
+
             state.products = action.payload?.products;
             state.totalAmount = action.payload?.totalAmount;
             state.customerName = action.payload?.customerName;
