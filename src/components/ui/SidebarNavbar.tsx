@@ -11,7 +11,7 @@ export default function SidebarNavbar({ children }) {
         (state: RootState) => state.cart.totalAmount
     );
     const order = useSelector((state: RootState) => state.order);
-    console.log(order);
+    // console.log(order);
     const menu = (
         <>
             <li>

@@ -22,7 +22,7 @@ const ProductDetails = () => {
             }),
     });
     const product = productData?.data;
-    console.log(productData?.data);
+    // console.log(productData?.data);
 
     if (isPendingProducts) {
         <div className="">

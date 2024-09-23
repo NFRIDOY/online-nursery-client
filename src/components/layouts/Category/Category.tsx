@@ -35,7 +35,7 @@ export default function Category() {
         // console.log(isError)
         <div>Loading....</div>;
     }
-    console.log(categoryData);
+    // console.log(categoryData);
     return (
         <Container>
             {/* {categoryData && <Title>All Category</Title>} */}

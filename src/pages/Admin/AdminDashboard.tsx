@@ -35,7 +35,7 @@ const AdminDashboard = () => {
             }),
     });
     // const { totalProducts, totalCategory, totalOrders } = statsData.data;
-    console.log(statsData);
+    // console.log(statsData);
     if (isPendingProducts || errorProducts) {
         // console.log(isPending)
         // console.log(isError)

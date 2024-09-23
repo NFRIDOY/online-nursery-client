@@ -58,14 +58,14 @@ export default function AddProductForm() {
             },
             rating: parseFloat(rating),
         };
-        console.log("Form Data:", formData);
+        // console.log("Form Data:", formData);
         // Send Data to server
         publicAxios.post("/products", formData).then((res) => {
-            console.log(res);
+            // console.log(res);
             if (res?.data?.success) {
-                console.log("Success");
+                // console.log("Success");
             } else {
-                console.log("Something went wrong::", res);
+                // console.log("Something went wrong::", res);
             }
         });
     };

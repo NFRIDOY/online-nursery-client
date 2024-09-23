@@ -15,9 +15,9 @@ const Cart = () => {
         const form = event.target;
         // const fomr = form.
 
-        console.log("Clicking");
+        // console.log("Clicking");
     };
-    console.log("products ==>", products)
+    // console.log("products ==>", products)
     return (
         <div>
             <form

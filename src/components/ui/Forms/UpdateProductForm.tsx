@@ -71,7 +71,7 @@ export default function UpdateProductForm({ id, product }) {
         formState: { errors },
     } = useForm<TProduct>();
     const onSubmit: SubmitHandler<TProduct> = async (data) => {
-        console.log(data);
+        // console.log(data);
         const plantData = {
             _id: data?._id,
             image: data?.image,
@@ -87,15 +87,15 @@ export default function UpdateProductForm({ id, product }) {
                 inStock: watch("quantity") != 0 ? true : false,
             },
         };
-        console.log("plantData => ", plantData);
+        // console.log("plantData => ", plantData);
         try {
             const response = await publicAxios.put(
                 `/products/${id}`,
                 plantData
             );
-            console.log(response);
+            // console.log(response);
         } catch (error) {
-            console.log("Error Updating Product");
+            // console.log("Error Updating Product");
         }
     };
 

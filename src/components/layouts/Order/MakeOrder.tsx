@@ -34,14 +34,14 @@ const MakeOrder = () => {
 
         // desructure the cart product into product id + quantity
 
-        console.log("cart => ",cart)
+        // console.log("cart => ",cart)
         const cartIdQuantity = cart?.products?.map(({_id, quantity}) => ({_id, quantity}))
-        console.log("cartIdQuantity => ",cartIdQuantity)
+        // console.log("cartIdQuantity => ",cartIdQuantity)
 
         // Dispatch action to update the order in Redux
         dispatch(
             confirmOrder({
-                // cart: cartIdQuantity,
+                cart: cartIdQuantity,
                 ...cart,
                 ...formData,
             })
@@ -53,11 +53,11 @@ const MakeOrder = () => {
             ...cart,
             ...formData,
         });
-        console.log("Order registered====", order);
+        // console.log("Order registered====", order);
 
         try {
             const response = await publicAxios.post(`/orders`, order);
-            console.log("response: ",response);
+            // console.log("response: ",response);
             if (!response) {
                 return;
             }
@@ -69,7 +69,7 @@ const MakeOrder = () => {
                 timer: 1500,
             });
         } catch (error) {
-            console.log("Error Updating Product");
+            // console.log("Error Updating Product");
         }
 
         // TODO: Navigate to payment page

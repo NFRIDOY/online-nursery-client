@@ -12,7 +12,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const dispatch = useDispatch();
     // const handleAddToCart = (product: TProduct) => {
     //     dispatch(addToCart({...product, quantity: 1}))
-    //     console.log("product added")
+    //     // console.log("product added")
     // }
 
     return (

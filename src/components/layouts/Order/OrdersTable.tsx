@@ -39,7 +39,7 @@ const OrdersTable = () => {
     };
 
     const handleOrder = (orderId) => {
-        console.log(orderId)
+        // console.log(orderId)
     };
 
     return (

@@ -76,7 +76,7 @@ const ProductsByCategory = () => {
             <span className="loading loading-dots loading-xs"></span>
         </div>;
     }
-    console.log(productData);
+    // console.log(productData);
     return (
         <Container>
             {filteredProducts?.length > 0 && (

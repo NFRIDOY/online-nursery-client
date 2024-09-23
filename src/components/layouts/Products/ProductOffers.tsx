@@ -30,7 +30,7 @@ const ProductOffers = () => {
             }),
     });
 
-    console.log(productData?.data);
+    // console.log(productData?.data);
     return (
         <div className="relative -z-50">
             <div>
