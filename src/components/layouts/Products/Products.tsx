@@ -31,7 +31,7 @@ const Products = () => {
         // console.log(isError)
         <div>Loading....</div>;
     }
-    // console.log(productData);
+    console.log(productData);
     return (
         <Container>
             {

@@ -29,6 +29,7 @@ const MakeOrder = () => {
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
+        console.log("Clicked")
 
         // desructure the cart product into product id + quantity
 
@@ -52,11 +53,11 @@ const MakeOrder = () => {
         //     ...cart,
         //     ...formData,
         // });
-        // console.log("Order registered====", order);
+        console.log("Order registered====", order);
 
         try {
             const response = await publicAxios.post(`/orders`, order);
-            // console.log("response: ",response);
+            console.log("response: ",response);
             if (!response) {
                 return;
             }

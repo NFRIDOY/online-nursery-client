@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../hooks/useAxios";
 import Container from "../../ui/Container";
-import Title from "../../ui/Title";
 import { Link } from "react-router-dom";
 import useScrollToTop from "../../../utils-hooks-ts-React/hooks/useScrollToTop";
 
@@ -29,7 +28,7 @@ export default function Category() {
                 return res.data;
             }),
     });
-
+    console.log(categoryData?.data);
     if (isPendingCategory || errorCategory) {
         // console.log(isPending)
         // console.log(isError)
@@ -40,7 +39,7 @@ export default function Category() {
         <Container>
             {/* {categoryData && <Title>All Category</Title>} */}
             <div className="grid grid-cols-2 lg:grid-cols-6 md:gap-y-10  justify-center items-center w-full border-0 mt-10">
-                {categoryData?.data?.slice(0, 8)?.map((category) => (
+                {categoryData?.data?.slice(0, 8)?.map((category: any) => (
                     <>
                         {/* <ProductCard product={product} /> */}
                         <Link
