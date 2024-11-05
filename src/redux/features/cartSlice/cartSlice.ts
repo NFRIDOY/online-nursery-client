@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { TInventory} from "../../../utils/types/product.interface";
+import { TInventory } from "../../../utils/types/product.interface";
 import { TCategory } from "../../../utils/types/category.interface";
 
 export type IProduct = {
@@ -34,12 +34,10 @@ export const cartSlice = createSlice({
                 (item) => item._id === action.payload._id
             );
             // if (existingItem?.inventory.quantity) {
-            if (true) {
-                if (existingItem) {
-                    existingItem.quantity += action.payload.quantity;
-                } else {
-                    state.products.push(action.payload);
-                }
+            if (existingItem) {
+                existingItem.quantity += action.payload.quantity;
+            } else {
+                state.products.push(action.payload);
             }
 
             state.totalAmount += action.payload.price * action.payload.quantity;
@@ -62,23 +60,23 @@ export const cartSlice = createSlice({
             const itemToDecrement = state.products.find(
                 (item) => item._id === action.payload
             );
-        
+
             if (itemToDecrement) {
                 // First decrement the quantity
                 itemToDecrement.quantity -= 1;
-        
+
                 // If quantity becomes 0, remove the item from the cart
                 if (itemToDecrement.quantity === 0) {
                     state.products = state.products.filter(
                         (item) => item._id !== action.payload
                     );
                 }
-        
+
                 // Subtract the price from total amount after decrement
                 state.totalAmount -= itemToDecrement.price;
             }
         },
-        
+
         resetOrder: () => initialState,
         // decrement: (state) => {
         //     state.value -= 1;
